@@ -9,9 +9,9 @@
 class subItem
 {
     private: 
-        std::string title, link, pubDate, guid, description, content;
+        std::string title, link, pubDate, guid, description, content, creator, publisher, publink;
     public:
-        subItem(pugi::xml_node node);
+        subItem(pugi::xml_node node, std::string publisher, std::string publink);
         void dump();
 };
 
@@ -20,7 +20,7 @@ class XParser
     private:
         std::string title, link, description;
         std::vector <subItem> items;
-        void add_item(pugi::xml_node node);
+        void add_item(pugi::xml_node node, std::string publisher, std::string publink);
 
     public:
         XParser(std::string input);
