@@ -1,21 +1,23 @@
 
+CFLAGS=-Wall
+LDFLAGS=-lcurl
 
 default: all
 
 fetcher.o: fetcher.cpp fetcher.hpp
-	g++ -Wall -c fetcher.cpp
+	g++ ${CFLAGS} -c fetcher.cpp
 
 main.o: main.cpp fetcher.hpp xparser.hpp
-	g++ -Wall -c main.cpp
+	g++ ${CFLAGS} -c main.cpp
 
 pugixml.o: pugixml.cpp pugixml.hpp pugiconfig.hpp
-	g++ -Wall -c pugixml.cpp
+	g++ ${CFLAGS} -c pugixml.cpp
 
 xparser.o: xparser.cpp xparser.hpp pugixml.hpp
-	g++ -Wall -c xparser.cpp
+	g++ ${CFLAGS} -c xparser.cpp
 
 all: fetcher.o main.o pugixml.o xparser.o
-	g++ fetcher.o main.o pugixml.o xparser.o -o rssgen
+	g++ ${CFLAGS} ${LDFLAGS} fetcher.o main.o pugixml.o xparser.o -o rssgen
 	./rssgen > tmp.html
 
 clean:
