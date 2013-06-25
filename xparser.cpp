@@ -43,6 +43,7 @@ void XParser::dump()
 	<< " line-height: 27px;  } " 
 	<< "#item a { color: black; font-weight: bold; text-decoration: none } "
 	<< "#item span { display: inline; width: 2in; overflow: hidden; } "
+    << "#padding { height: 100%; } "
 	<< "</style>" << endl;
     cout << "<script type=\"text/javascript\">"
 	<< "var shown; function showme(which) {"
@@ -60,6 +61,7 @@ void XParser::dump()
     {
         this->items[i].dump();
     }
+cout << "<div id=\"padding\"></div>" << endl;
     cout << "</body>" << endl;
 }
 
