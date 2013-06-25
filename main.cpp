@@ -1,13 +1,20 @@
 #include "fetcher.hpp"
 #include "xparser.hpp"
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
 int main()
 {
-    Fetcher g("http://feeds.arstechnica.com/arstechnica/everything");
+    ifstream urls;
+    urls.open("rss_urls.txt");
 
-    XParser(g.fetch()).dump();
+    string line;
+    while (getline(urls, line))
+    {
+        Fetcher g(line);
+        XParser(g.fetch()).dump();
+    }
     return 0;
 }

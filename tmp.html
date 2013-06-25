@@ -1,28 +1,232 @@
 <html><head><meta charset="utf-8">
-<style type="text/css">#itemwrapper { border-bottom: 1px solid #CCCCCC; margin-left: 1in; font-family: arial, sans-serif; font-size: 80%; }#item { cursor: pointer; height: 27px; overflow: hidden; white-space: nowrap;  line-height: 27px;  color: #999999 } #item b { color: black; font-weight: bold; } a.titleLink { color: #16f; font-size: 18px; font-weight: bold; text-decoration: none } #padding { height: 100%; } .authorInfo { color: #777777 } </style>
+<style type="text/css">#itemwrapper { border-bottom: 1px solid #CCCCCC;  font-family: arial, sans-serif; font-size: 80%; }#item { padding: 6px; cursor: pointer; height: 27px; overflow: hidden; white-space: nowrap;  line-height: 27px;  color: #999999 } #item b { color: black; font-weight: bold; } a.titleLink { color: #16f; font-size: 18px; font-weight: bold; text-decoration: none;} .content { display: none; padding: 10px; height: auto; overflow: auto; } #padding { height: 0; } .authorInfo { color: #777777; margin-bottom: 10px; } .navbar { position: absolute; border-right: solid 1px #CCCCCC; height: 100%; overflow: auto; width: 200px;  float: left; }.wrapall { width: 100%; height: 100%} .wrapcontent { padding-left: 204px;  position: relative;  width: auto; height: 100%; overflow: auto; }body { overflow: hidden } </style>
 <script type="text/javascript">var shown; function showme(which) {if (document.getElementById(which)) { if (shown) { shown.style.display = 'none'; if (shown.id == which) {  shown = null; return } }  shown = document.getElementById(which); var data = shown.innerHTML.toString(); data =data.replace('<!--<<<<<', ''); data = data.replace('>>>>>-->', '');  shown.innerHTML = data;  shown.style.display = 'block';   shown.parentNode.scrollIntoView(1); var bar = shown.parentNode.firstChild; while (bar && !( bar.id == 'item')) { bar = bar.nextSibling; } if (bar) { //alert('marking ' + shown.getAttribute('data-guid') + ' as read.'); 
 bar.style.backgroundColor='#EEEEEE'; } } }function mj() { if (shown) { showme('spec' + String(parseInt(shown.id.toString().substr(4))+1)) } } function mk() { if (shown) { showme('spec' + String(parseInt(shown.id.toString().substr(4))-1)) } }  document.onkeypress = function(e) { if (e.charCode == 74 || e.charCode == 106) { mj(); } else if (e.charCode == 75 || e.charCode == 107) { mk(); }  }; </script></head><body>
-Ars Technica
-http://arstechnica.com
-The Art of Technology
+<div class="wrapall">
+<div class="navbar">Navbar goes here.</div>
+<div class="wrapcontent"><div id="itemwrapper">
+<div id="item" onclick="showme('spec1');"><b>Vast majority of malware attacks spawned from legit sites</b> - Drive-by attacks not just from porn and warez sites, new Google data shows.</div>
+<div class="content" id="spec1"  data-guid="http://arstechnica.com/?p=296107"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/_ndPPR-K7Z4/">Vast majority of malware attacks spawned from legit sites</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Dan Goodin</span><br /><!--<<<<<<div id="rss-wrap">
+<div>
+      <img src="http://cdn.arstechnica.net/wp-content/uploads/2013/06/google-malicious-website-data-640x345.jpg"><div class="caption" style="font-size:0.8em">
+	
+			<div class="caption-credit">
+							Google				</div>
+	  </div>
+  </div>
+ <p>The vast majority of sites that push malware on their visitors are legitimate online services that have been hacked as opposed to those hosted by attackers for the purposes of distributing malicious software, Google security researchers said Tuesday.</p>
+<p>The data, included for the first time as part of the <a href="http://www.google.com/transparencyreport/safebrowsing">safe browsing section</a> of Google's regular transparency report, further challenges the myth that malware attacks happen only on disreputable sites, such as those that peddle porn, illicit software ("warez"), and similar content. For instance, on June 9 only 3,891 of the sites Google blocked as part of its <a href="http://googleonlinesecurity.blogspot.com/2012/06/safe-browsing-protecting-web-users-for.html">Safe Browsing program</a> were dedicated malware sites, while the remaining 39,247 sites that were filtered offered legitimate services that had been compromised.</p>
+<p>In all, Google blocks about 10,000 sites per day as part of the program, which is designed to help people using Firefox, Chrome, and other participating browsers to steer clear of phishing scams and drive-by malware attacks. The program is also designed to inform webmasters of infections hitting their site and to take steps to fix the problems. In all, the Safe Browsing program helps protect about 1 billion people per day.</p>
+</div><p><a href="http://arstechnica.com/security/2013/06/vast-majority-of-malware-attacks-spawned-from-legit-sites/#p3">Read 2 remaining paragraphs</a> | <a href="http://arstechnica.com/security/2013/06/vast-majority-of-malware-attacks-spawned-from-legit-sites/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/_ndPPR-K7Z4" height="1" width="1"/>>>>>>--></div>
+</div>
 <div id="itemwrapper">
-<div id="item" onclick="showme('spec1');"><b>Barnes & Noble to stop building Nook tablets, seeks hardware partners</b> - Co-branded tablets to be released in "partnership model"; e-readers unaffected.</div>
-<div id="spec1" style="display: none" data-guid="http://arstechnica.com/?p=295665"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/29nZ8o0fTZ0/">Barnes & Noble to stop building Nook tablets, seeks hardware partners</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Jon Brodkin</span><br /><br /><!--<<<<<<div id="rss-wrap"> <p>Barnes &amp; Noble has announced that it will stop manufacturing Nook tablets, but the company is not getting out of the tablet market completely. Instead of building its own, Barnes &amp; Noble will attempt to create a co-branded line of tablets with third-party manufacturers. The announcement does not affect the Nook e-reader line, which Barnes &amp; Noble will continue to make itself.</p>
+<div id="item" onclick="showme('spec2');"><b>Sony goes bigger and even more waterproof with the Xperia Z Ultra</b> - It will also feature one of Qualcomm's newest processors and Android 4.2.2.</div>
+<div class="content" id="spec2"  data-guid="http://arstechnica.com/?p=296073"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/G5F5Dx_vv5k/">Sony goes bigger and even more waterproof with the Xperia Z Ultra</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Florence Ion</span><br /><!--<<<<<<div id="rss-wrap"> <div class="image center large">
+<a href="/wp-content/uploads/2013/06/0_Xperia_Z_Ultra_Black_Campaign.jpg"><img src="/wp-content/uploads/2013/06/0_Xperia_Z_Ultra_Black_Campaign-640x640.jpg"></a><div class="caption" style="font-size:0.8em">
+<div class="caption-text"><a href="/wp-content/uploads/2013/06/0_Xperia_Z_Ultra_Black_Campaign.jpg" class="caption-link" rel="nofollow"></a></div> </div>
+</div>
+<p>Adding yet another phone-tablet hybrid to the pile, Sony has <a href="http://blogs.sonymobile.com/press_release/the-new-xperia-z-ultra-the-worlds-slimmest-and-largest-full-hd-smartphone-display/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=the-new-xperia-z-ultra-the-worlds-slimmest-and-largest-full-hd-smartphone-display">announced </a>the dustproof and waterproof successor to its Xperia Z series. The Xperia Z Ultra is bigger and comes with one of Qualcomm's latest processors, though we're not sure when we'll see it in the US.</p>
+<p>The Xperia Z Ultra is bigger than its 5-inch sibling, with a 6.4-inch display and 1080p resolution. Sony says the phone-tablet hybrid weighs about 212 grams, though it manages to maintain a svelte chassis at only 6.5 mm thickness. It also features a 3000 mAh battery pack to power that large display, in addition to a 2.2GHz Qualcomm Snapdragon 800 processor, 2GB of RAM, and 4G LTE connectivity, though no specific band has been mentioned. Additionally, there is 16GB of onboard storage available and a microSD slot for an additional storage of up to 64GB.</p>
+<p>Those interested in taking the "phablet" underwater will also be pleased to know that the Xperia Z Ultra features IP55 and IP58 waterproofing, which makes it just a little more resilient than its predecessors. It will also feature Android 4.2 Jelly Bean right out of box, in addition to a slew of other software features like Sony's movie, music, and PlayStation apps. You can also use it to snap photos with its 8-megapixel rear-facing camera and 2-megapixel front-facing camera.</p>
+</div><p><a href="http://arstechnica.com/gadgets/2013/06/sony-goes-bigger-and-even-more-waterproof-with-the-xperia-z-ultra/#p3">Read 1 remaining paragraphs</a> | <a href="http://arstechnica.com/gadgets/2013/06/sony-goes-bigger-and-even-more-waterproof-with-the-xperia-z-ultra/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/G5F5Dx_vv5k" height="1" width="1"/>>>>>>--></div>
+</div>
+<div id="itemwrapper">
+<div id="item" onclick="showme('spec3');"><b>Hands-on with the Windows “Blue” desktop experience</b> - A peek at the Windows 8.1 interface via the Windows Server 2012 R2 preview.</div>
+<div class="content" id="spec3"  data-guid="http://arstechnica.com/?p=295621"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/PDGzxjVXrjE/">Hands-on with the Windows “Blue” desktop experience</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Sean Gallagher</span><br /><!--<<<<<<div id="rss-wrap">
+<div>
+      <img src="http://cdn.arstechnica.net/wp-content/uploads/2013/06/Screen-Shot-2013-06-25-at-9.24.23-AM1.png"><div class="caption" style="font-size:0.8em">
+			<div class="caption-text">The Beta fish is back in the new Windows "Blue" previews.</div>
+	
+	  </div>
+  </div>
+ <p>This week, Microsoft is unveiling the previews for its Windows "Blue" operating systems—the Windows 8.1 client, Windows Server 2012 R2, and an update to Windows Server Essentials.  Last night, Microsoft released the previews through its MSDN and TechNet programs for its server platforms, which include a feature called "Desktop Experience"—an add-on which gives the server versions of the platform the same interface as Windows 8.1.</p>
+<p>As a result, Microsoft has tipped its hand about some of the interface changes it will be showing in the preview of the client, which it will release later this week. Here's a quick look at the most significant changes in the interface we've found in our first hands-on with the preview revisions.</p>
+<p> </p>
+</div><p><a href="http://arstechnica.com/information-technology/2013/06/hands-on-with-windows-blue-desktop-experience/">Read on Ars Technica</a> | <a href="http://arstechnica.com/information-technology/2013/06/hands-on-with-windows-blue-desktop-experience/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/PDGzxjVXrjE" height="1" width="1"/>>>>>>--></div>
+</div>
+<div id="itemwrapper">
+<div id="item" onclick="showme('spec4');"><b>World of Warcraft mobile auctions closed after rash of account hijacks</b> - Temporary closure follows reports of hackers using mobile armory to scam users.</div>
+<div class="content" id="spec4"  data-guid="http://arstechnica.com/?p=295907"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/_7QtAGB0KVA/">World of Warcraft mobile auctions closed after rash of account hijacks</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Dan Goodin</span><br /><!--<<<<<<div id="rss-wrap">
+<div>
+      <img src="http://cdn.arstechnica.net/wp-content/uploads/2013/06/wow-mobile-armory-640x331.jpg"><div class="caption" style="font-size:0.8em">
+	
+			<div class="caption-credit">
+							<a rel="nofollow" href="https://secure.flickr.com/photos/center4edupunx/7854046528/sizes/c/in/photostream/https://secure.flickr.com/photos/center4edupunx/7854046528/sizes/c/in/photostream/">Center4EduPunx</a>
+				</div>
+	  </div>
+  </div>
+ <p><em>World of Warcraft</em> publisher Blizzard has temporarily closed mobile access to its online auction house following reports that hackers were using it to scam users out of large amounts of digital gold.</p>
+<p>"There's been a recent increase in unauthorized <em>World of Warcraft</em> account-logins via our website and the <em>World of Warcraft</em> mobile armory app," Blizzard officials warned in a <a href="http://eu.battle.net/wow/en/blog/10310774/Account_Security_Warning-25_06_2013">blog post published Tuesday morning</a>. The company is in the process of notifying users who show signs of account compromise and who didn't use a two-factor "authenticator" to help secure connections. Those users will receive instructions for resetting their accounts and be eligible to have their raided gold restored.</p>
+<p>The temporary closure comes three days after reports surfaced that unauthorized purchases were being made against user accounts at highly inflated prices. "The items purchased were two brawler white quality items and a white quality level 1 axe," one <em>WoW</em> player wrote <a href="http://us.battle.net/wow/en/forum/topic/9344634977?page=1">here</a>. "I have an authenticator and a relatively difficult password. What could have happened, and what recourse do I have? Will I ever see my gold again?" The items purchased were a brawler's vest for 135,423g, a worn battleaxe for 53,142g, and brawler's pants for 19,660g.</p>
+</div><p><a href="http://arstechnica.com/security/2013/06/world-of-warcraft-mobile-auctions-closed-after-rash-of-account-hijacks/#p3">Read 2 remaining paragraphs</a> | <a href="http://arstechnica.com/security/2013/06/world-of-warcraft-mobile-auctions-closed-after-rash-of-account-hijacks/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/_7QtAGB0KVA" height="1" width="1"/>>>>>>--></div>
+</div>
+<div id="itemwrapper">
+<div id="item" onclick="showme('spec5');"><b>Second time’s the charm: The Xperia Tablet Z review</b> - Sony goes high-end with a thin, waterproof chassis and MHL capabilities. </div>
+<div class="content" id="spec5"  data-guid="http://arstechnica.com/?p=293061"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/w2z8nl1fSzg/">Second time’s the charm: The Xperia Tablet Z review</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Florence Ion</span><br /><!--<<<<<<div id="rss-wrap">
+<div>
+      <img src="http://cdn.arstechnica.net/wp-content/uploads/2013/06/XperiaTabletZ15-640x426.jpg"><div class="caption" style="font-size:0.8em">
+	
+			<div class="caption-credit">
+							Florence Ion				</div>
+	  </div>
+  </div>
+ <p>Sony has a long history of producing handsome products, but the company has had some trouble gaining market share. According to analyst <a href="http://www.gartner.com/newsroom/id/2482816">reports</a>, it's been trailing behind most handset manufacturers, despite the launch of its Xperia Z and ZL smartphones. But it's latest device, the Xperia Tablet Z, could help the give the company a bit of a boost, at least in the tablet sector.</p>
+<p>The Xperia Tablet Z is Sony's diamond in the rough. It’s a beautiful tablet with clean lines and a feather-light chassis. It makes devices like Apple’s fourth-generation iPad feel antiquated just by its weight alone. But looks and feel aren't the only factors that can carry a gadget through to success. In Sony’s case, it’s competing in a market teeming with OEMs that are in a race to the bottom—the idea being that the cheapest tablet could sell the most units. But Sony is taking the opposite approach by producing a higher-end tablet at a premium price (a $500 price-point, to be exact). It's always been Sony's<em> modus operandi</em> to offer stylish products at a higher price than others, but whether it will be successful in the Android market remains to be seen. Will Sony see success with the Tablet Z? Let's find out.</p>
+<h2>Design</h2>
+  <div class="gallery">
+    <div class="gallery-main-image" style="width:auto">
+      <div class="gallery-image-container" style="height:auto">
+        <div class="gallery-image-wrap">
+        <a class="enlarge" href="http://cdn.arstechnica.net/wp-content/uploads/2013/06/XperiaTabletZ2.jpg" data-width="680" data-height="453">
+          <img src="http://cdn.arstechnica.net/wp-content/uploads/2013/06/XperiaTabletZ2-640x426.jpg" style="max-width:auto;max-height:auto"></a>
+        </div>
+      </div>
+    </div>
+
+        <div class="gallery-image-description">
+
+          <p>Meet the Xperia Tablet Z.</p>
+    
+    
+    </div>
+    
+       
+          <p><strong>9 more images in gallery</strong></p>
+      </div>
+    
+<table width="300" align="right"><tbody>
+<tr>
+<th colspan="2">Specs at a glance: Sony Xperia Tablet Z</th>
+</tr>
+<tr>
+<th>Screen</th>
+<td>1920x1200 10.1-inch TFT Color LCD (224 ppi)</td>
+</tr>
+<tr>
+<th>OS</th>
+<td>Android 4.1.2 Jelly Bean with Sony Xperia UI</td>
+</tr>
+<tr>
+<th>CPU</th>
+<td>Quad-core 1.5GHz Qualcomm Snapdragon S4</td>
+</tr>
+<tr>
+<th>RAM</th>
+<td>2GB</td>
+</tr>
+<tr>
+<th>GPU</th>
+<td>Qualcomm Adreno 320</td>
+</tr>
+<tr>
+<th>Storage</th>
+<td>16, 32, or 64 GB NAND flash, expandable via microSD</td>
+</tr>
+<tr>
+<th>Networking</th>
+<td>802.11a/b/g/n, Bluetooth 4.0, NFC, DLNA, optional 4G LTE</td>
+</tr>
+<tr>
+<th>Ports</th>
+<td>Micro-USB, headphones</td>
+</tr>
+<tr>
+<th>Camera</th>
+<td>8MP rear camera, 2MP front camera</td>
+</tr>
+<tr>
+<th>Size</th>
+<td>10.47" × 0.27" × 6.77" (266 × 6.9 × 172 mm)</td>
+</tr>
+<tr>
+<th>Weight</th>
+<td>1.09 lbs. (495 g)</td>
+</tr>
+<tr>
+<th>Battery</th>
+<td>6000 mAh</td>
+</tr>
+<tr>
+<th>Starting price</th>
+<td>$499.99 for 16GB, $599 for 32GB</td>
+</tr>
+<tr>
+<th>Sensor</th>
+<td>Ambient light sensor, GPS, thermometer, barometer, proximity sensor, gesture sensor, RGB light sensor</td>
+</tr>
+<tr>
+<th>Other perks</th>
+<td>Waterproof, MHL capable</td>
+</tr>
+</tbody></table>
+<p>The Xperia Tablet Z is a 10.1-inch beauty. It has some professional flair with its all-black casing, but its thin chassis gives it a youthful look. There is also a bit of space in between the screen and the edge of the body, so you can pick up the tablet without worrying that you'll accidentally activate something on-screen. When you turn off the screen, the difference between the screen and the edge of the tablet are indistinguishable, which is just another example of Sony's subtle design prowess.</p>
+</div><p><a href="http://arstechnica.com/gadgets/2013/06/second-times-the-charm-the-xperia-tablet-z-review/#p3">Read 43 remaining paragraphs</a> | <a href="http://arstechnica.com/gadgets/2013/06/second-times-the-charm-the-xperia-tablet-z-review/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/w2z8nl1fSzg" height="1" width="1"/>>>>>>--></div>
+</div>
+<div id="itemwrapper">
+<div id="item" onclick="showme('spec6');"><b>Liveblog: Microsoft’s Build 2013 keynote</b> - Windows 8.1 will debut in full at 9am PDT on June 26. </div>
+<div class="content" id="spec6"  data-guid="http://arstechnica.com/?p=295867"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/kRs1soLx20Y/">Liveblog: Microsoft’s Build 2013 keynote</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Casey Johnston</span><br /><!--<<<<<<div id="rss-wrap"> <a href="http://live.arstechnica.com/microsoft-build-2013-day-1-keynote/" target="_blank" class="liveblog-button">View Liveblog</a>
+<p>The day-one keynote of <a href="http://arstechnica.com/information-technology/2013/03/microsoft-coming-to-san-francisco-in-june-for-its-next-big-developer-confab/">Microsoft’s Build developer conference</a> is nearly upon us. Microsoft will focus on Windows 8.1, which will scale back some of the radical changes that came with Windows 8 and return Microsoft’s customers to somewhat more familiar territory.</p>
+<p>The key change will be the return of the Start button, which disappeared on Windows 8 in favor of a hot-corner shortcut to the Metro interface. This is either a major relief for consumers or a case of Microsoft <a href="http://arstechnica.com/information-technology/2013/05/microsoft-should-stick-to-its-guns-and-keep-the-start-button-gone/">folding when it should have been holding</a>.</p>
+<p>We may see a few more features yet, including an option to boot to desktop rather than the Metro interface, or a global search interface that is augmented with results from Bing.</p>
+</div><p><a href="http://arstechnica.com/information-technology/2013/06/liveblog-microsofts-build-2013-keynote/#p3">Read 1 remaining paragraphs</a> | <a href="http://arstechnica.com/information-technology/2013/06/liveblog-microsofts-build-2013-keynote/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/kRs1soLx20Y" height="1" width="1"/>>>>>>--></div>
+</div>
+<div id="itemwrapper">
+<div id="item" onclick="showme('spec7');"><b>Gigabit Seattle priced at $80 per month, just over what Google Fiber costs</b> - Emerald City to get those sweet speeds sometime in 2014.</div>
+<div class="content" id="spec7"  data-guid="http://arstechnica.com/?p=295863"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/Bg50Cm8Z-n4/">Gigabit Seattle priced at $80 per month, just over what Google Fiber costs</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Cyrus Farivar</span><br /><!--<<<<<<div id="rss-wrap"> <p dir="ltr" id="docs-internal-guid-17e3ae9d-7c18-0074-ae4c-75e464ce97a4">Last year, <a href="http://arstechnica.com/business/2012/12/seattle-announces-its-own-gigabit-internet-service/">Seattle decided to join</a> the gigabit Internet party. Gigabit Seattle has just announced its pricing, and it looks a lot like <a href="https://fiber.google.com/about/">Google Fiber’s offerings</a>.</p>
+<p>The company <a href="http://gigabitseattle.com/gigabit-squared-unveils-residential-pricing-for-local-ultra-high-speed-fiber-network-service-in-seattle/#sthash.Sxx6PzGE.Z9T5Zm7o.dpuf">said Monday</a> that there would be three creatively named options available to subscribers when it launches the service next year:</p>
+<blockquote>
+<p>Plan A:</p>
+<ul>
+<li dir="ltr">5 Mbps download/1 Mbps upload: No charge for 60 months</li>
+<li dir="ltr">5/1 Mbps services are transferable to new renters or owners</li>
+<li dir="ltr">After 60 months renters or owners can convert to a 10 Mbps download/10 Mbps upload service plan for only $10 per month</li>
+</ul>
+<p>Plan B:</p>
+<ul>
+<li dir="ltr">100 Mbps download/100 Mbps upload for $45 per month</li>
+<li dir="ltr">No installation charge with one-year contract</li>
+</ul>
+<p>Plan C:</p>
+<ul>
+<li dir="ltr">1000 Mbps download/1000 Mbps upload for $80 per month</li>
+<li dir="ltr">No installation charge with one-year contract</li>
+</ul>
+</blockquote>
+<p>Gigabit Seattle is a partnership between Gigabit Squared and the University of Washington to bring 1Gbps connections to the Emerald City, using fiber <a href="http://seattletimes.com/html/technologybrierdudleysblog/2018755601_seattle_parting_out_network_en.html?syndication=rss">originally planned</a> for a municipal network.</p>
+</div><p><a href="http://arstechnica.com/business/2013/06/gigabit-seattle-priced-at-80-per-month-just-over-what-google-fiber-costs/#p3">Read 1 remaining paragraphs</a> | <a href="http://arstechnica.com/business/2013/06/gigabit-seattle-priced-at-80-per-month-just-over-what-google-fiber-costs/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/Bg50Cm8Z-n4" height="1" width="1"/>>>>>>--></div>
+</div>
+<div id="itemwrapper">
+<div id="item" onclick="showme('spec8');"><b>Facebook phone sells out at AT&T</b> - A bittersweet success for a unique failure. </div>
+<div class="content" id="spec8"  data-guid="http://arstechnica.com/?p=295819"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/whzg-zIWFmQ/">Facebook phone sells out at AT&T</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Casey Johnston</span><br /><!--<<<<<<div id="rss-wrap">
+<div>
+      <img src="http://cdn.arstechnica.net/wp-content/uploads/2013/04/IMG_4033-640x528.jpg"><div class="caption" style="font-size:0.8em">
+			<div class="caption-text">If you wanted one, against our better judgment, you may be too late. </div>
+	
+	  </div>
+  </div>
+ <p><span style="font-size: 14px; line-height: 19px;">AT&amp;T has sold through all of its stock of the HTC First, according to a </span><a style="font-size: 14px; line-height: 19px;" href="http://news.cnet.com/8301-1035_3-57590819-94/at-ts-mobile-chief-weve-sold-out-of-the-facebook-phone/">report</a><span style="font-size: 14px; line-height: 19px;"> from CNET Tuesday. The news comes after the First’s Facebook Home interface was almost universally panned, the phone underwent a price drop to just 99¢ on contract, and rumors surfaced that AT&amp;T was trying to </span><a style="font-size: 14px; line-height: 19px;" href="http://arstechnica.com/gadgets/2013/05/facebook-home-flagship-phone-htc-first-may-be-discontinued/">give back unsold stock</a><span style="font-size: 14px; line-height: 19px;"> to HTC.</span></p>
+<p>Facebook Home has elicited <a href="http://arstechnica.com/gadgets/2013/04/htc-first-review-dont-call-it-the-facebook-phone/">negative reactions</a> from the get-go, to the point that Facebook publicly acknowledged the problems and <a href="http://arstechnica.com/gadgets/2013/05/facebook-plans-on-fixing-home-so-that-android-users-feel-wait-for-it-at-home/">promised fixes</a>, including the addition of a dock feature that wouldn’t leave Android users so far adrift. AT&amp;T dropped the price on the phone less than a month after release. Reportedly, Samsung responded to Facebook’s offer to collaborate on its own Home phone with, “<a href="http://9to5google.com/2013/06/18/samsung-reportedly-declines-zuckerbergs-request-to-work-on-the-next-facebook-phone/">thanks, but we’re good</a>.”</p>
+<p>While AT&amp;T did manage to sell out of the phone, it is neither reporting sales numbers nor indicating whether it plans to restock. The rumors of returned stock to HTC came alongside whispers that the phone would be <a href="http://arstechnica.com/gadgets/2013/05/facebook-home-flagship-phone-htc-first-may-be-discontinued/">discontinued entirely</a> once remaining stock was dealt with. If this were the last of the First, we wouldn't be surprised: it's more than enough turmoil for one phone in just shy of two and a half months of existence.</p>
+</div><p><a href="http://arstechnica.com/gadgets/2013/06/facebook-phone-sells-out-at-att/#p3">Read 1 remaining paragraphs</a> | <a href="http://arstechnica.com/gadgets/2013/06/facebook-phone-sells-out-at-att/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/whzg-zIWFmQ" height="1" width="1"/>>>>>>--></div>
+</div>
+<div id="itemwrapper">
+<div id="item" onclick="showme('spec9');"><b>Barnes & Noble to stop building Nook tablets, seeks hardware partners</b> - Co-branded tablets to be released in "partnership model"; e-readers unaffected.</div>
+<div class="content" id="spec9"  data-guid="http://arstechnica.com/?p=295665"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/29nZ8o0fTZ0/">Barnes & Noble to stop building Nook tablets, seeks hardware partners</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Jon Brodkin</span><br /><!--<<<<<<div id="rss-wrap"> <p>Barnes &amp; Noble has announced that it will stop manufacturing Nook tablets, but the company is not getting out of the tablet market completely. Instead of building its own, Barnes &amp; Noble will attempt to create a co-branded line of tablets with third-party manufacturers. The announcement does not affect the Nook e-reader line, which Barnes &amp; Noble will continue to make itself.</p>
 <p>Barnes &amp; Noble made the announcement today in its <a href="http://www.barnesandnobleinc.com/press_releases/6_25_13_2013_FYE_financial_results.html">fourth quarter earnings report</a>:</p>
 <blockquote><p>The company plans to significantly reduce losses in the NOOK segment by limiting risks associated with manufacturing. Going forward, the company intends to continue to design eReading devices and reading platforms, while creating a partnership model for manufacturing in the competitive color tablet market. Thus, the widely popular lines of Simple Touch and Glowlight products will continue to be developed in house, and the company’s tablet line will be co-branded with yet to be announced third-party manufacturers of consumer electronics products.</p></blockquote>
 <p>Barnes &amp; Noble will continue to sell its existing inventory of Nook tablets (namely the Nook HD and Nook HD+) through the holiday season and will continue to offer "software upgrades and improvements to the digital bookstore service."</p>
 </div><p><a href="http://arstechnica.com/business/2013/06/barnes-noble-to-stop-building-nook-tablets-seeks-hardware-partners/#p3">Read 4 remaining paragraphs</a> | <a href="http://arstechnica.com/business/2013/06/barnes-noble-to-stop-building-nook-tablets-seeks-hardware-partners/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/29nZ8o0fTZ0" height="1" width="1"/>>>>>>--></div>
 </div>
 <div id="itemwrapper">
-<div id="item" onclick="showme('spec2');"><b>Microsoft’s Age of Empires coming to non-Windows phones</b> - Mobile reboot hits iOS, Android thanks to licensing agreement.</div>
-<div id="spec2" style="display: none" data-guid="http://arstechnica.com/?p=295613"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/fE_hRzPpSbo/">Microsoft’s Age of Empires coming to non-Windows phones</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Kyle Orland</span><br /><br /><!--<<<<<<div id="rss-wrap"> <p>Since the launch of Windows Phone 7, Microsoft <a href="http://arstechnica.com/information-technology/2010/08/xbox-live-on-windows-phone-7-looks-cool-but-is-it-enough/">has been pushing</a> exclusive, Microsoft-published games and Xbox Live features as a selling point for serious mobile gamers. Now, there are some signs that Microsoft is loosening its tight grip on its gaming properties, allowing a mobile reboot of <i>Age of Empires</i> to show up on iOS and Android devices first.</p>
+<div id="item" onclick="showme('spec10');"><b>Microsoft’s Age of Empires coming to non-Windows phones</b> - Mobile reboot hits iOS, Android thanks to licensing agreement.</div>
+<div class="content" id="spec10"  data-guid="http://arstechnica.com/?p=295613"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/fE_hRzPpSbo/">Microsoft’s Age of Empires coming to non-Windows phones</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Kyle Orland</span><br /><!--<<<<<<div id="rss-wrap"> <p>Since the launch of Windows Phone 7, Microsoft <a href="http://arstechnica.com/information-technology/2010/08/xbox-live-on-windows-phone-7-looks-cool-but-is-it-enough/">has been pushing</a> exclusive, Microsoft-published games and Xbox Live features as a selling point for serious mobile gamers. Now, there are some signs that Microsoft is loosening its tight grip on its gaming properties, allowing a mobile reboot of <i>Age of Empires</i> to show up on iOS and Android devices first.</p>
 <p>This isn't the first time a Microsoft game has appeared on a non-Windows mobile device. Games like <i>Wordament</i> and <i>Kinectimals</i> have appeared on other platforms, and second-party titles like <i>Ms. Splosion Man</i> have made their way to non-Windows phones after a period of Microsoft exclusivity. Plenty of companion apps for Xbox 360 and Windows games, including <a href="http://arstechnica.com/gaming/2012/06/xbox-360-smartglass-turns-phone-or-tablet-into-second-controller/">Microsoft's Smartglass features</a>, also work on other mobile phones and tablets.</p>
 <p>Still, <i>Age of Empires</i> is one of Microsoft's best-known franchises, one that <a href="http://www.polygon.com/2013/6/24/4461272/microsoft-xbox-pc-games-to-ios-and-android-age-of-empires">Polygon reports</a> the company is licensing to Japanese developer KLab for a free-to-play version that will come to iOS and Android first, with a Windows Phone version only coming later. It's not that surprising that KLab would make that platform choice, considering that Windows Phone has less than 2 percent of the overall mobile market, compared to a combined 84 percent for iOS and Android (according to <a href="http://www.netmarketshare.com/">NetMarketShare Web browser tracking data</a>). What's more surprising is that Microsoft would <i>let</i> the developer make that decision with one of its biggest exclusive properties.</p>
 </div><p><a href="http://arstechnica.com/gaming/2013/06/microsofts-age-of-empires-coming-to-non-windows-phones/#p3">Read 1 remaining paragraphs</a> | <a href="http://arstechnica.com/gaming/2013/06/microsofts-age-of-empires-coming-to-non-windows-phones/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/fE_hRzPpSbo" height="1" width="1"/>>>>>>--></div>
 </div>
 <div id="itemwrapper">
-<div id="item" onclick="showme('spec3');"><b>The story behind the island that wasn’t there</b> - How a 1908 error managed to persist through the satellite era.</div>
-<div id="spec3" style="display: none" data-guid="http://arstechnica.com/?p=295177"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/9skg6PgQzLU/">The story behind the island that wasn’t there</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Scott K. Johnson</span><br /><br /><!--<<<<<<div id="rss-wrap">
+<div id="item" onclick="showme('spec11');"><b>The story behind the island that wasn’t there</b> - How a 1908 error managed to persist through the satellite era.</div>
+<div class="content" id="spec11"  data-guid="http://arstechnica.com/?p=295177"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/9skg6PgQzLU/">The story behind the island that wasn’t there</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Scott K. Johnson</span><br /><!--<<<<<<div id="rss-wrap">
 <div>
       <img src="http://cdn.arstechnica.net/wp-content/uploads/2013/06/CoralSea_Sunset-640x480.jpg"><div class="caption" style="font-size:0.8em">
 			<div class="caption-text">Sunset over the Coral Sea as seen from the deck of the RV Southern Surveyor.</div>
@@ -37,8 +241,8 @@ The Art of Technology
 </div><p><a href="http://arstechnica.com/science/2013/06/the-story-behind-the-island-that-wasnt-there/#p3">Read 16 remaining paragraphs</a> | <a href="http://arstechnica.com/science/2013/06/the-story-behind-the-island-that-wasnt-there/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/9skg6PgQzLU" height="1" width="1"/>>>>>>--></div>
 </div>
 <div id="itemwrapper">
-<div id="item" onclick="showme('spec4');"><b>Download me—Saying “yes” to the Web’s most dangerous search terms</b> - Seeking "free games" and getting burned by illicit downloads is so 2008, right?</div>
-<div id="spec4" style="display: none" data-guid="http://arstechnica.com/?p=275797"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/ZTNKgIOuXx0/">Download me—Saying “yes” to the Web’s most dangerous search terms</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Ars Staff</span><br /><br /><!--<<<<<<div id="rss-wrap">
+<div id="item" onclick="showme('spec12');"><b>Download me—Saying “yes” to the Web’s most dangerous search terms</b> - Seeking "free games" and getting burned by illicit downloads is so 2008, right?</div>
+<div class="content" id="spec12"  data-guid="http://arstechnica.com/?p=275797"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/ZTNKgIOuXx0/">Download me—Saying “yes” to the Web’s most dangerous search terms</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Ars Staff</span><br /><!--<<<<<<div id="rss-wrap">
 <div>
       <img src="http://cdn.arstechnica.net/wp-content/uploads/2013/06/download-me-640-2.jpg"><div class="caption" style="font-size:0.8em">
 	
@@ -57,8 +261,8 @@ The Art of Technology
 </div><p><a href="http://arstechnica.com/information-technology/2013/06/download-me-saying-yes-to-the-webs-most-dangerous-search-terms/#p3">Read 44 remaining paragraphs</a> | <a href="http://arstechnica.com/information-technology/2013/06/download-me-saying-yes-to-the-webs-most-dangerous-search-terms/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/ZTNKgIOuXx0" height="1" width="1"/>>>>>>--></div>
 </div>
 <div id="itemwrapper">
-<div id="item" onclick="showme('spec5');"><b>Microsoft reveals Xbox One headsets aren’t included with base system [updated]</b> - PS4 includes a headset, but Xbox One owners can use Kinect to talk to friends</div>
-<div id="spec5" style="display: none" data-guid="http://arstechnica.com/?p=295227"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/8cMKI3XffEY/">Microsoft reveals Xbox One headsets aren’t included with base system [updated]</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Kyle Orland</span><br /><br /><!--<<<<<<div id="rss-wrap">
+<div id="item" onclick="showme('spec13');"><b>Microsoft reveals Xbox One headsets aren’t included with base system [updated]</b> - PS4 includes a headset, but Xbox One owners can use Kinect to talk to friends</div>
+<div class="content" id="spec13"  data-guid="http://arstechnica.com/?p=295227"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/8cMKI3XffEY/">Microsoft reveals Xbox One headsets aren’t included with base system [updated]</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Kyle Orland</span><br /><!--<<<<<<div id="rss-wrap">
 <div>
       <img src="http://cdn.arstechnica.net/wp-content/uploads/2013/06/xboxoneheadset.png">
 </div>
@@ -69,8 +273,8 @@ The Art of Technology
 </div><p><a href="http://arstechnica.com/gaming/2013/06/microsoft-reveals-xbox-one-headsets-arent-included-with-base-system/#p3">Read 5 remaining paragraphs</a> | <a href="http://arstechnica.com/gaming/2013/06/microsoft-reveals-xbox-one-headsets-arent-included-with-base-system/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/8cMKI3XffEY" height="1" width="1"/>>>>>>--></div>
 </div>
 <div id="itemwrapper">
-<div id="item" onclick="showme('spec6');"><b>Gut bacteria may be key to crop pest’s resurgence</b> - Crop rotation had them under control,  then corn rootworms started eating other crops.</div>
-<div id="spec6" style="display: none" data-guid="http://arstechnica.com/?p=295313"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/aMO93OcHoqw/">Gut bacteria may be key to crop pest’s resurgence</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by John Timmer</span><br /><br /><!--<<<<<<div id="rss-wrap">
+<div id="item" onclick="showme('spec14');"><b>Gut bacteria may be key to crop pest’s resurgence</b> - Crop rotation had them under control,  then corn rootworms started eating other crops.</div>
+<div class="content" id="spec14"  data-guid="http://arstechnica.com/?p=295313"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/aMO93OcHoqw/">Gut bacteria may be key to crop pest’s resurgence</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by John Timmer</span><br /><!--<<<<<<div id="rss-wrap">
 <div>
       <img src="http://cdn.arstechnica.net/wp-content/uploads/2013/06/k1289-17.jpg"><div class="caption" style="font-size:0.8em">
 	
@@ -85,8 +289,8 @@ The Art of Technology
 </div><p><a href="http://arstechnica.com/science/2013/06/gut-bacteria-may-be-key-to-crop-pests-resurgence/#p3">Read 7 remaining paragraphs</a> | <a href="http://arstechnica.com/science/2013/06/gut-bacteria-may-be-key-to-crop-pests-resurgence/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/aMO93OcHoqw" height="1" width="1"/>>>>>>--></div>
 </div>
 <div id="itemwrapper">
-<div id="item" onclick="showme('spec7');"><b>OS X is holding back the 2013 MacBook Air’s 802.11ac Wi-Fi speeds</b> - Networking issues slow down file transfers relative to Windows on the same hardware.</div>
-<div id="spec7" style="display: none" data-guid="http://arstechnica.com/?p=294981"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/pkodZ6Qq7IY/">OS X is holding back the 2013 MacBook Air’s 802.11ac Wi-Fi speeds</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Andrew Cunningham</span><br /><br /><!--<<<<<<div id="rss-wrap">
+<div id="item" onclick="showme('spec15');"><b>OS X is holding back the 2013 MacBook Air’s 802.11ac Wi-Fi speeds</b> - Networking issues slow down file transfers relative to Windows on the same hardware.</div>
+<div class="content" id="spec15"  data-guid="http://arstechnica.com/?p=294981"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/pkodZ6Qq7IY/">OS X is holding back the 2013 MacBook Air’s 802.11ac Wi-Fi speeds</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Andrew Cunningham</span><br /><!--<<<<<<div id="rss-wrap">
 <div>
       <img src="http://cdn.arstechnica.net/wp-content/uploads/2013/06/ME918_AV4-640x640.jpeg"><div class="caption" style="font-size:0.8em">
 			<div class="caption-text">Apple's 2013 MacBook Air and new Airport Extreme Base Station are the company's first 802.11ac products, and there are some bugs that need to be worked out.</div>
@@ -101,8 +305,8 @@ The Art of Technology
 </div><p><a href="http://arstechnica.com/apple/2013/06/os-x-is-holding-back-the-2013-macbook-airs-802-11ac-wi-fi-speeds/#p3">Read 8 remaining paragraphs</a> | <a href="http://arstechnica.com/apple/2013/06/os-x-is-holding-back-the-2013-macbook-airs-802-11ac-wi-fi-speeds/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/pkodZ6Qq7IY" height="1" width="1"/>>>>>>--></div>
 </div>
 <div id="itemwrapper">
-<div id="item" onclick="showme('spec8');"><b>Raspberry Pi bot tracks hacker posts to vacuum up passwords and more</b> - Dumpmon scours Twitter for sensitive data hiding in plain sight.</div>
-<div id="spec8" style="display: none" data-guid="http://arstechnica.com/?p=295201"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/M9ElNX1Ao4s/">Raspberry Pi bot tracks hacker posts to vacuum up passwords and more</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Dan Goodin</span><br /><br /><!--<<<<<<div id="rss-wrap">
+<div id="item" onclick="showme('spec16');"><b>Raspberry Pi bot tracks hacker posts to vacuum up passwords and more</b> - Dumpmon scours Twitter for sensitive data hiding in plain sight.</div>
+<div class="content" id="spec16"  data-guid="http://arstechnica.com/?p=295201"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/M9ElNX1Ao4s/">Raspberry Pi bot tracks hacker posts to vacuum up passwords and more</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Dan Goodin</span><br /><!--<<<<<<div id="rss-wrap">
 <div>
       <img src="http://cdn.arstechnica.net/wp-content/uploads/2013/06/vacuum-robot.jpg"><div class="caption" style="font-size:0.8em">
 	
@@ -117,15 +321,15 @@ The Art of Technology
 </div><p><a href="http://arstechnica.com/security/2013/06/raspberry-pi-bot-tracks-hacker-posts-to-vacuum-up-passwords-and-more/#p3">Read 10 remaining paragraphs</a> | <a href="http://arstechnica.com/security/2013/06/raspberry-pi-bot-tracks-hacker-posts-to-vacuum-up-passwords-and-more/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/M9ElNX1Ao4s" height="1" width="1"/>>>>>>--></div>
 </div>
 <div id="itemwrapper">
-<div id="item" onclick="showme('spec9');"><b>Java and other Oracle software heads to the Microsoft cloud</b> - Companies agree to make Oracle's licensed Java "first class" Azure platform.</div>
-<div id="spec9" style="display: none" data-guid="http://arstechnica.com/?p=295291"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/bCuOXozLEK8/">Java and other Oracle software heads to the Microsoft cloud</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Sean Gallagher</span><br /><br /><!--<<<<<<div id="rss-wrap"> <p><span style="font-size: 14px; line-height: 19px;">Microsoft and Oracle may compete head to head in many ways within the database realm, but today the two companies performed the most sweeping cross-join ever as executives from the two companies announced a broad partnership around cloud computing. In a conference call this afternoon, Microsoft CEO Steve Ballmer and Oracle President Mark Hurd discussed a partnership between the companies that will bring Oracle platforms—including Java middleware—into Microsoft's Azure cloud. </span></p>
+<div id="item" onclick="showme('spec17');"><b>Java and other Oracle software heads to the Microsoft cloud</b> - Companies agree to make Oracle's licensed Java "first class" Azure platform.</div>
+<div class="content" id="spec17"  data-guid="http://arstechnica.com/?p=295291"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/bCuOXozLEK8/">Java and other Oracle software heads to the Microsoft cloud</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Sean Gallagher</span><br /><!--<<<<<<div id="rss-wrap"> <p><span style="font-size: 14px; line-height: 19px;">Microsoft and Oracle may compete head to head in many ways within the database realm, but today the two companies performed the most sweeping cross-join ever as executives from the two companies announced a broad partnership around cloud computing. In a conference call this afternoon, Microsoft CEO Steve Ballmer and Oracle President Mark Hurd discussed a partnership between the companies that will bring Oracle platforms—including Java middleware—into Microsoft's Azure cloud. </span></p>
 <p>Oracle has moved to certify and support its products, including Oracle WebLogic, the Oracle database, and Oracle Linux, for Azure and Microsoft's Hyper-V hypervisor. "At the highest level, this partnership extends Oracle's support of Windows Server to also include Windows Hyper-V and Windows Azure as supported platforms," Ballmer said.</p>
 <p>Oracle will provide full license mobility, Ballmer added, so that customers can move existing Oracle software licenses from on-premises physical or virtual servers to virtual servers on Hyper-V and in the Azure cloud. "There's an immediate benefit for our customers," he said. Support of Oracle's database and application server products, and of Oracle Linux, is available immediately starting today.</p>
 </div><p><a href="http://arstechnica.com/information-technology/2013/06/microsoft-oracle-ink-deal-to-bring-oracles-software-to-azure-hyper-v/#p3">Read 3 remaining paragraphs</a> | <a href="http://arstechnica.com/information-technology/2013/06/microsoft-oracle-ink-deal-to-bring-oracles-software-to-azure-hyper-v/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/bCuOXozLEK8" height="1" width="1"/>>>>>>--></div>
 </div>
 <div id="itemwrapper">
-<div id="item" onclick="showme('spec10');"><b>A patent on watching ads online? No problem, says top patent court</b> - Patent used to sue video sites lives on despite skepticism from Supreme Court.</div>
-<div id="spec10" style="display: none" data-guid="http://arstechnica.com/?p=294983"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/83QO7KMSsqY/">A patent on watching ads online? No problem, says top patent court</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Jon Brodkin</span><br /><br /><!--<<<<<<div id="rss-wrap">
+<div id="item" onclick="showme('spec18');"><b>A patent on watching ads online? No problem, says top patent court</b> - Patent used to sue video sites lives on despite skepticism from Supreme Court.</div>
+<div class="content" id="spec18"  data-guid="http://arstechnica.com/?p=294983"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/83QO7KMSsqY/">A patent on watching ads online? No problem, says top patent court</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Jon Brodkin</span><br /><!--<<<<<<div id="rss-wrap">
 <div>
       <img src="http://cdn.arstechnica.net/wp-content/uploads/2013/06/hulu-plus.jpg"><div class="caption" style="font-size:0.8em">
 	
@@ -140,8 +344,8 @@ The Art of Technology
 </div><p><a href="http://arstechnica.com/tech-policy/2013/06/a-patent-on-watching-ads-online-no-problem-says-top-patent-court/#p3">Read 8 remaining paragraphs</a> | <a href="http://arstechnica.com/tech-policy/2013/06/a-patent-on-watching-ads-online-no-problem-says-top-patent-court/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/83QO7KMSsqY" height="1" width="1"/>>>>>>--></div>
 </div>
 <div id="itemwrapper">
-<div id="item" onclick="showme('spec11');"><b>Assange: Snowden is en route to Ecuador and “in a safe place” for now</b> - On conference call, Assange also says Snowden's materials are secured. (MP3 available)</div>
-<div id="spec11" style="display: none" data-guid="http://arstechnica.com/?p=294909"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/RbOVCK_-REg/">Assange: Snowden is en route to Ecuador and “in a safe place” for now</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Cyrus Farivar</span><br /><br /><!--<<<<<<div id="rss-wrap">
+<div id="item" onclick="showme('spec19');"><b>Assange: Snowden is en route to Ecuador and “in a safe place” for now</b> - On conference call, Assange also says Snowden's materials are secured. (MP3 available)</div>
+<div class="content" id="spec19"  data-guid="http://arstechnica.com/?p=294909"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/RbOVCK_-REg/">Assange: Snowden is en route to Ecuador and “in a safe place” for now</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Cyrus Farivar</span><br /><!--<<<<<<div id="rss-wrap">
 <div>
       <img src="http://cdn.arstechnica.net/wp-content/uploads/2013/06/5935487106_3cb3e4099b_o-640x428.jpg"><div class="caption" style="font-size:0.8em">
 			<div class="caption-text">Julian Assange (center), the founder of WikiLeaks, has become the de facto lead advocate for Edward Snowden.</div>
@@ -157,8 +361,8 @@ The Art of Technology
 </div><p><a href="http://arstechnica.com/tech-policy/2013/06/assange-snowden-is-en-route-to-ecuador-and-in-a-safe-place-for-now/#p3">Read 15 remaining paragraphs</a> | <a href="http://arstechnica.com/tech-policy/2013/06/assange-snowden-is-en-route-to-ecuador-and-in-a-safe-place-for-now/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/RbOVCK_-REg" height="1" width="1"/>>>>>>--></div>
 </div>
 <div id="itemwrapper">
-<div id="item" onclick="showme('spec12');"><b>Cassini captures gigantic hurricane on Saturn in exquisite detail</b> - Features of Saturn's Great White Spot as small as 14 km were imaged.</div>
-<div id="spec12" style="display: none" data-guid="http://arstechnica.com/?p=294955"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/5qqmXf-ipg4/">Cassini captures gigantic hurricane on Saturn in exquisite detail</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by John Timmer</span><br /><br /><!--<<<<<<div id="rss-wrap">
+<div id="item" onclick="showme('spec20');"><b>Cassini captures gigantic hurricane on Saturn in exquisite detail</b> - Features of Saturn's Great White Spot as small as 14 km were imaged.</div>
+<div class="content" id="spec20"  data-guid="http://arstechnica.com/?p=294955"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/5qqmXf-ipg4/">Cassini captures gigantic hurricane on Saturn in exquisite detail</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by John Timmer</span><br /><!--<<<<<<div id="rss-wrap">
 <div>
       <img src="http://cdn.arstechnica.net/wp-content/uploads/2013/06/PIA12826_modest.jpg"><div class="caption" style="font-size:0.8em">
 	
@@ -173,8 +377,8 @@ The Art of Technology
 </div><p><a href="http://arstechnica.com/science/2013/06/cassini-captures-gigantic-hurricane-on-saturn-in-exquisite-detail/#p3">Read 4 remaining paragraphs</a> | <a href="http://arstechnica.com/science/2013/06/cassini-captures-gigantic-hurricane-on-saturn-in-exquisite-detail/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/5qqmXf-ipg4" height="1" width="1"/>>>>>>--></div>
 </div>
 <div id="itemwrapper">
-<div id="item" onclick="showme('spec13');"><b>Samsung launches three different flavors of its Galaxy Tab 3</b> - How big do you want the screen to be?</div>
-<div id="spec13" style="display: none" data-guid="http://arstechnica.com/?p=294885"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/szl4cs5mjJ8/">Samsung launches three different flavors of its Galaxy Tab 3</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Florence Ion</span><br /><br /><!--<<<<<<div id="rss-wrap"> <div class="image center large">
+<div id="item" onclick="showme('spec21');"><b>Samsung launches three different flavors of its Galaxy Tab 3</b> - How big do you want the screen to be?</div>
+<div class="content" id="spec21"  data-guid="http://arstechnica.com/?p=294885"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/szl4cs5mjJ8/">Samsung launches three different flavors of its Galaxy Tab 3</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Florence Ion</span><br /><!--<<<<<<div id="rss-wrap"> <div class="image center large">
 <a href="/wp-content/uploads/2013/06/gtab3whitegalaxy-tab-3-7-sidemat.jpg"><img src="/wp-content/uploads/2013/06/gtab3whitegalaxy-tab-3-7-sidemat-640x426.jpg"></a><div class="caption" style="font-size:0.8em">
 <div class="caption-text"><a href="/wp-content/uploads/2013/06/gtab3whitegalaxy-tab-3-7-sidemat.jpg" class="caption-link" rel="nofollow"></a></div> </div>
 </div>
@@ -184,8 +388,8 @@ The Art of Technology
 </div><p><a href="http://arstechnica.com/gadgets/2013/06/samsung-launches-three-different-flavors-of-its-galaxy-tab-3/#p3">Read 2 remaining paragraphs</a> | <a href="http://arstechnica.com/gadgets/2013/06/samsung-launches-three-different-flavors-of-its-galaxy-tab-3/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/szl4cs5mjJ8" height="1" width="1"/>>>>>>--></div>
 </div>
 <div id="itemwrapper">
-<div id="item" onclick="showme('spec14');"><b>Dealmaster, phone home!</b> - Top deal this week is 50% off a ton of different smartphones at AT&#038;T.</div>
-<div id="spec14" style="display: none" data-guid="http://arstechnica.com/?p=294917"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/Nm30nge1c1Y/">Dealmaster, phone home!</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Lee Hutchinson</span><br /><br /><!--<<<<<<div id="rss-wrap"> <p>Greetings, fellow Arsians! To get your week started off right, our partners over at <a href="http://logicbuy.com">Logicbuy</a> have put together a doozy of a smartphone deal. If you don't mind signing up for a post-paid plan with a 2-year contract, AT&amp;T is offering a whole mess of smartphones for 50% off! The shiny new Galaxy S 4 Active (the tougher, waterproof cousin of the <a href="http://arstechnica.com/gadgets/2013/04/samsung-galaxy-s-4-the-empire-strikes-back-with-a-faster-sleeker-handset/">Galaxy S 4</a>) is just $99, as is the iPhone 5. It's a great time to grab a nice phone for a good price!</p>
+<div id="item" onclick="showme('spec22');"><b>Dealmaster, phone home!</b> - Top deal this week is 50% off a ton of different smartphones at AT&#038;T.</div>
+<div class="content" id="spec22"  data-guid="http://arstechnica.com/?p=294917"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/Nm30nge1c1Y/">Dealmaster, phone home!</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Lee Hutchinson</span><br /><!--<<<<<<div id="rss-wrap"> <p>Greetings, fellow Arsians! To get your week started off right, our partners over at <a href="http://logicbuy.com">Logicbuy</a> have put together a doozy of a smartphone deal. If you don't mind signing up for a post-paid plan with a 2-year contract, AT&amp;T is offering a whole mess of smartphones for 50% off! The shiny new Galaxy S 4 Active (the tougher, waterproof cousin of the <a href="http://arstechnica.com/gadgets/2013/04/samsung-galaxy-s-4-the-empire-strikes-back-with-a-faster-sleeker-handset/">Galaxy S 4</a>) is just $99, as is the iPhone 5. It's a great time to grab a nice phone for a good price!</p>
 <p><strong>Top deal:</strong></p>
 <ul class="spaced">
 <li>
@@ -207,8 +411,8 @@ The Art of Technology
 </div><p><a href="http://arstechnica.com/gadgets/2013/06/dealmaster-phone-home/#p3">Read 4 remaining paragraphs</a> | <a href="http://arstechnica.com/gadgets/2013/06/dealmaster-phone-home/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/Nm30nge1c1Y" height="1" width="1"/>>>>>>--></div>
 </div>
 <div id="itemwrapper">
-<div id="item" onclick="showme('spec15');"><b>Netflix’s open source “Genie” controls data in Amazon’s cloud</b> - Netflix shares its wisdom—and software—for running Hadoop on Amazon.</div>
-<div id="spec15" style="display: none" data-guid="http://arstechnica.com/?p=294819"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/qXUVjxx9HCI/">Netflix’s open source “Genie” controls data in Amazon’s cloud</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Jon Brodkin</span><br /><br /><!--<<<<<<div id="rss-wrap">
+<div id="item" onclick="showme('spec23');"><b>Netflix’s open source “Genie” controls data in Amazon’s cloud</b> - Netflix shares its wisdom—and software—for running Hadoop on Amazon.</div>
+<div class="content" id="spec23"  data-guid="http://arstechnica.com/?p=294819"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/qXUVjxx9HCI/">Netflix’s open source “Genie” controls data in Amazon’s cloud</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Jon Brodkin</span><br /><!--<<<<<<div id="rss-wrap">
 <div>
       <img src="http://cdn.arstechnica.net/wp-content/uploads/2013/06/genie-640x480.jpg"><div class="caption" style="font-size:0.8em">
 	
@@ -224,16 +428,16 @@ The Art of Technology
 </div><p><a href="http://arstechnica.com/information-technology/2013/06/netflixs-open-source-genie-controls-the-data-in-amazons-cloud/#p3">Read 5 remaining paragraphs</a> | <a href="http://arstechnica.com/information-technology/2013/06/netflixs-open-source-genie-controls-the-data-in-amazons-cloud/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/qXUVjxx9HCI" height="1" width="1"/>>>>>>--></div>
 </div>
 <div id="itemwrapper">
-<div id="item" onclick="showme('spec16');"><b>Apple to pay parents whose kids made unauthorized in-app purchases</b> - Class-action settlement will give out iTunes gift cards, cash.</div>
-<div id="spec16" style="display: none" data-guid="http://arstechnica.com/?p=294829"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/whL7UqZHiqo/">Apple to pay parents whose kids made unauthorized in-app purchases</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Lee Hutchinson</span><br /><br /><!--<<<<<<div id="rss-wrap"> <p>Back in <a href="http://arstechnica.com/apple/2011/02/ftc-says-it-will-look-into-apples-marketing-of-in-app-purchases-to-kids/">2011</a>, the Federal Trade Commission promised to look into the controls Apple had in place to prevent minors from making in-app purchases on iOS games. It has taken quite a while, but it looks like there's finally movement happening on that front: just shy of four months after a five-year-old in the UK bought <a href="http://arstechnica.com/apple/2013/03/five-year-old-runs-up-2500-in-app-purchase-tab-with-apple/">$2,500 worth of in-app bling</a>, Apple is releasing details about a <a href="http://9to5mac.com/2013/06/23/apple-notifies-itunes-users-of-in-app-purchase-settlement-details-5-to-those-inappropriately-charged-under-30/">class-action settlement</a> intended to resolve the issue.</p>
+<div id="item" onclick="showme('spec24');"><b>Apple to pay parents whose kids made unauthorized in-app purchases</b> - Class-action settlement will give out iTunes gift cards, cash.</div>
+<div class="content" id="spec24"  data-guid="http://arstechnica.com/?p=294829"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/whL7UqZHiqo/">Apple to pay parents whose kids made unauthorized in-app purchases</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Lee Hutchinson</span><br /><!--<<<<<<div id="rss-wrap"> <p>Back in <a href="http://arstechnica.com/apple/2011/02/ftc-says-it-will-look-into-apples-marketing-of-in-app-purchases-to-kids/">2011</a>, the Federal Trade Commission promised to look into the controls Apple had in place to prevent minors from making in-app purchases on iOS games. It has taken quite a while, but it looks like there's finally movement happening on that front: just shy of four months after a five-year-old in the UK bought <a href="http://arstechnica.com/apple/2013/03/five-year-old-runs-up-2500-in-app-purchase-tab-with-apple/">$2,500 worth of in-app bling</a>, Apple is releasing details about a <a href="http://9to5mac.com/2013/06/23/apple-notifies-itunes-users-of-in-app-purchase-settlement-details-5-to-those-inappropriately-charged-under-30/">class-action settlement</a> intended to resolve the issue.</p>
 <p>Details of the settlement can be found on <a href="https://www.itunesinapppurchasesettlement.com/CAClaimForms/AIL/Home.aspx">this site</a> (which, ironically, appears to be programmed in Microsoft ASP.NET and served on Microsoft IIS 7.5):</p>
 <blockquote><p>If you are eligible for settlement benefits, you may choose between (a) a single $5 iTunes Store credit or (b) a credit equal to the total amount of Game Currency that a minor charged to your iTunes account without your knowledge or permission within a single forty-five (45) day period, less any refund you previously received. A cash refund in lieu of an iTunes Store credit is available if (a) you no longer have an active iTunes account, or (b) your claims exceed $30 in total. Additional requirements for claiming charges after the forty-five (45) day period apply.</p></blockquote>
 <p>In typical class-action fashion, the settlement provides a small amount of remuneration in the form of a $5 iTunes gift card if you claim that a minor purchased less than $30 of unauthorized stuff; if you have more than $30 in unauthorized purchases, the settlement will provide some undefined amount of cash.</p>
 </div><p><a href="http://arstechnica.com/apple/2013/06/apple-to-pay-parents-whose-kids-made-unauthorized-in-app-purchases/#p3">Read 1 remaining paragraphs</a> | <a href="http://arstechnica.com/apple/2013/06/apple-to-pay-parents-whose-kids-made-unauthorized-in-app-purchases/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/whL7UqZHiqo" height="1" width="1"/>>>>>>--></div>
 </div>
 <div id="itemwrapper">
-<div id="item" onclick="showme('spec17');"><b>Ellen Page thinks Naughty Dog “ripped off” her likeness for The Last of Us</b> - <i>Beyond: Two Souls</i> star doesn't appreciate similarities to zombie survivor Ellie</div>
-<div id="spec17" style="display: none" data-guid="http://arstechnica.com/?p=294815"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/HQEAkpq8DAg/">Ellen Page thinks Naughty Dog “ripped off” her likeness for The Last of Us</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Kyle Orland</span><br /><br /><!--<<<<<<div id="rss-wrap">
+<div id="item" onclick="showme('spec25');"><b>Ellen Page thinks Naughty Dog “ripped off” her likeness for The Last of Us</b> - <i>Beyond: Two Souls</i> star doesn't appreciate similarities to zombie survivor Ellie</div>
+<div class="content" id="spec25"  data-guid="http://arstechnica.com/?p=294815"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/HQEAkpq8DAg/">Ellen Page thinks Naughty Dog “ripped off” her likeness for The Last of Us</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Kyle Orland</span><br /><!--<<<<<<div id="rss-wrap">
 <div>
       <img src="http://cdn.arstechnica.net/wp-content/uploads/2013/06/last-of-us-heads-3-640x360.jpg"><div class="caption" style="font-size:0.8em">
 			<div class="caption-text">Ashley Johnson looks less like Ellen Page than Johnson's Ellie looks like Page's Jodie.</div>
@@ -245,98 +449,6 @@ The Art of Technology
 <p>It's true: the visual similarities between the real-life Page and the virtual Ellie have confused a <a href="https://twitter.com/ez50864/status/344689364636430336">few</a> <a href="https://twitter.com/JamieScoins/status/346051392147968000">people</a> <a href="https://twitter.com/pspcarlos/status/348958198314696705">on Twitter</a>. Page doesn't want the credit, though, sending one Twitter user toward <a href="https://twitter.com/TheVulcanSalute">Ellie's actual voice and mo-cap actress Ashley Johnson</a> in <a href="https://twitter.com/EllenPage/status/348961670833512449">a response tweet</a> just last night.</p>
 </div><p><a href="http://arstechnica.com/gaming/2013/06/ellen-page-thinks-naughty-dog-ripped-off-her-likeness-for-the-last-of-us/#p3">Read 4 remaining paragraphs</a> | <a href="http://arstechnica.com/gaming/2013/06/ellen-page-thinks-naughty-dog-ripped-off-her-likeness-for-the-last-of-us/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/HQEAkpq8DAg" height="1" width="1"/>>>>>>--></div>
 </div>
-<div id="itemwrapper">
-<div id="item" onclick="showme('spec18');"><b>Your next desktop could be a 21.5-inch Android tablet from HP</b> - You said you wanted options, right?</div>
-<div id="spec18" style="display: none" data-guid="http://arstechnica.com/?p=294767"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/293GSY5r0JM/">Your next desktop could be a 21.5-inch Android tablet from HP</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Andrew Cunningham</span><br /><br /><!--<<<<<<div id="rss-wrap">
-<div>
-      <img src="http://cdn.arstechnica.net/wp-content/uploads/2013/06/slate21.jpg"><div class="caption" style="font-size:0.8em">
-			<div class="caption-text">HP continues to experiment with Android in places you wouldn't normally find Android.</div>
-	
-			<div class="caption-credit">
-							HP				</div>
-	  </div>
-  </div>
- <p>You've got an Android phone, an Android tablet, and maybe even an Android laptop, but be honest with yourself: your affection for Google's mobile operating system knows no bounds, and you won't rest until it's powering literally every computer you own. If this description fits you, HP's newly announced Slate 21 is for you. It's a 21.5-inch, 1920×1080 kickstand-toting all-in-one equipped with Nvidia's Tegra 4 SoC and running Android 4.2.2.</p>
-<p>We don't know much more about the all-in-one, which was announced this morning at an HP event in Beijing, but according to Engadget's <a href="http://www.engadget.com/2013/06/24/hp-launches-slate-21-aio/">translated version of the press release</a>, it also includes an HD webcam, integrated speakers, and HP's <a href="http://www.hp.com/global/us/en/wireless/wireless-direct.html">Wireless Direct</a> printing tech. We don't know anything about pricing, availability, or whether the desktop will even come to the US, but CNET <a href="http://asia.cnet.com/hp-slate-21-aio-is-a-21-inch-android-tablet-62221673.htm?src=twt">reports</a> that it will be rolled out to multiple countries eventually.</p>
-<p>Perhaps in an effort to offer cheaper machines without expensive Windows licenses or Intel processors, the PC OEMs are increasingly beginning to experiment with Android in form factors one wouldn't normally expect. The HP Slate 21 follows the previously announced <a href="http://www8.hp.com/us/en/ads/x2/slatebook-x2.html">HP Slate x2</a> convertible laptop, which is itself reminiscent of Asus' long-running <a href="http://eee.asus.com/en/transformer-300/features">Transformer Pad</a> series. Asus is also responsible for a few other Android-equipped curios, including both an <a href="http://arstechnica.com/gadgets/2013/03/asus-1299-transformer-all-in-one-dual-wields-windows-8-and-android/">all-in-one computer</a> and an <a href="http://arstechnica.com/gadgets/2013/06/two-cpus-two-batteries-two-oses-asus-announces-transformer-book-trio/">upcoming laptop</a> that have full Android tablets inside their detachable screens.</p>
-</div><p><a href="http://arstechnica.com/gadgets/2013/06/your-next-desktop-could-be-a-21-5-inch-android-tablet-from-hp/">Read on Ars Technica</a> | <a href="http://arstechnica.com/gadgets/2013/06/your-next-desktop-could-be-a-21-5-inch-android-tablet-from-hp/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/293GSY5r0JM" height="1" width="1"/>>>>>>--></div>
+<div id="padding"></div></div>
 </div>
-<div id="itemwrapper">
-<div id="item" onclick="showme('spec19');"><b>Did Snowden’s travel plans hit a snag? Leaker fails to catch flight to Havana</b> - Snowden's US passport has been revoked.</div>
-<div id="spec19" style="display: none" data-guid="http://arstechnica.com/?p=294751"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/hQeNkkXCBNg/">Did Snowden’s travel plans hit a snag? Leaker fails to catch flight to Havana</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Cyrus Farivar</span><br /><br /><!--<<<<<<div id="rss-wrap"> <p>After spending the night in Moscow’s Sheremetyevo Airport, NSA leaker Edward Snowden <a href="http://www.guardian.co.uk/world/2013/jun/24/edward-snowden-booked-on-plane-from-moscow-to-havana-live-coverage">did not board</a> the Aeroflot flight he had been expected to take to Havana. His plan was apparently to fly to the Cuban capital and then to go <a href="http://arstechnica.com/tech-policy/2013/06/with-wikileaks-help-snowden-lands-in-moscow-headed-on-to-democratic-nation/">on to Ecuador (where he had requested asylum)</a>. Snowden's whereabouts remain unknown.</p>
-<p>It may be that Snowden and his friends from WikiLeaks—who helped him secure a “special refugee travel document” last week from Ecuadorian authorities and assisted with his trip from Hong Kong to Moscow—have an alternate travel route in mind. There is also the possibility that he is being detained by Russian authorities.</p>
-<p>The State Department had revoked Snowden’s American passport on Friday, which is normal for persons with “<a href="http://arstechnica.com/tech-policy/2013/06/united-states-charges-snowden-with-espionage-asks-hong-kong-to-arrest-him/">felony arrest warrants</a>.”</p>
-</div><p><a href="http://arstechnica.com/tech-policy/2013/06/did-snowdens-travel-plans-hit-a-snag-leaker-fails-to-catch-flight-to-havana/#p3">Read 4 remaining paragraphs</a> | <a href="http://arstechnica.com/tech-policy/2013/06/did-snowdens-travel-plans-hit-a-snag-leaker-fails-to-catch-flight-to-havana/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/hQeNkkXCBNg" height="1" width="1"/>>>>>>--></div>
-</div>
-<div id="itemwrapper">
-<div id="item" onclick="showme('spec20');"><b>15 years of Ars: Individuals who redefined gaming, music, and tech policy</b> - Considering John Carmack (<em>Quake III</em>), Tim Wu (net neutrality), Shawn Fanning (Napster). </div>
-<div id="spec20" style="display: none" data-guid="http://arstechnica.com/?p=291725"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/JCdgOX_XfCs/">15 years of Ars: Individuals who redefined gaming, music, and tech policy</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Cyrus Farivar</span><br /><br /><!--<<<<<<div id="rss-wrap">
-<div>
-      <img src="http://cdn.arstechnica.net/wp-content/uploads/2013/06/Tech-Rebels-3.jpg"><div class="caption" style="font-size:0.8em">
-	
-			<div class="caption-credit">
-							Aurich Lawson / Jonathan Naumann / Joi Ito / Stanford CIS				</div>
-	  </div>
-  </div>
- <p dir="ltr" id="docs-internal-guid-6e8b37c8-58b1-d128-4f5a-cbd703767b18">Fifteen years ago, I was living outside Geneva, Switzerland, spending my lunch hours screwing around on the nascent Web a few dozen kilometers from where it was created. I popped into chat rooms, forums, and news sites, and I e-mailed family back home. I was learning French and getting my dose of tech news by reading the French-language edition of <em>Macworld</em> magazine. (<em>Génial</em>!)</p>
-<p>I returned Stateside mere months after Ars began, reading more and more about the people behind many of the technologies that I was becoming increasingly fascinated with. I consumed just about every book I could find describing the history and personalities behind graphical user interfaces, networking, the Internet itself, and more.</p>
-<p>If there’s one thing I’ve learned through all that, it’s that most people involved in technology continue the Newtonian tradition of humility. The most iconic innovators all seem to readily acknowledge that they stand on the shoulders of giants. In fact, when I met Vint Cerf and thanked him for making the work I do possible, he was a predictable gentleman, saying, “There were many others involved in the creation of TCP/IP, not just me.”</p>
-</div><p><a href="http://arstechnica.com/business/2013/06/15-years-of-ars-the-ones-who-redefined-gaming-music-and-tech-policy/#p3">Read 39 remaining paragraphs</a> | <a href="http://arstechnica.com/business/2013/06/15-years-of-ars-the-ones-who-redefined-gaming-music-and-tech-policy/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/JCdgOX_XfCs" height="1" width="1"/>>>>>>--></div>
-</div>
-<div id="itemwrapper">
-<div id="item" onclick="showme('spec21');"><b>Half of US already has smartphones, so mobile carriers push us to spend more</b> - Mobile data revenues reach record levels: $21 billion revenue in Q1 2013 alone.</div>
-<div id="spec21" style="display: none" data-guid="http://arstechnica.com/?p=294245"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/pPMlQmzV4mg/">Half of US already has smartphones, so mobile carriers push us to spend more</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Cyrus Farivar</span><br /><br /><!--<<<<<<div id="rss-wrap">
-<div>
-      <img src="http://cdn.arstechnica.net/wp-content/uploads/2013/06/3178877900_c636000a06_b-640x426.jpg"><div class="caption" style="font-size:0.8em">
-			<div class="caption-text">New mobile industry analysis estimates that US mobile data revenue will reach $90 billion by the end of 2013.</div>
-	
-			<div class="caption-credit">
-							<a rel="nofollow" href="https://secure.flickr.com/photos/waldengirl/3178877900/">khaybe</a>
-				</div>
-	  </div>
-  </div>
- <p dir="ltr" id="docs-internal-guid-6e8b37c8-6862-c13f-4d20-b634252b39cd">According to <a href="http://www.chetansharma.com/usmarketupdateq12013.htm">new industry data published last week from the mobile phone industry</a>, three major shifts are currently underway in the American cellular landscape. We’re spending record amounts on mobile data, carriers are making <a href="http://arstechnica.com/business/2012/06/prepaid-mobile-phone-users-in-america-hit-record-high/">hardly any money off new subscribers (hence the push toward data)</a>, and usage of Internet-based messaging systems is going through the roof.</p>
-<p>With that first shift, according to independent analyst Chetan Sharma, mobile data now accounts for “almost 45 percent of the US mobile industry services revenues, and as we had forecasted a few years back, the cross-over point of 50 percent might occur later this year.”</p>
-<p>So you’re not just imagining things—your mobile phone bill is creeping upward. Likely, it’s due to the fact that on your smartphone, you’re using data far more than texting and texting far more than calling.</p>
-</div><p><a href="http://arstechnica.com/business/2013/06/half-of-us-already-has-smartphones-so-mobile-carriers-push-us-to-spend-more/#p3">Read 6 remaining paragraphs</a> | <a href="http://arstechnica.com/business/2013/06/half-of-us-already-has-smartphones-so-mobile-carriers-push-us-to-spend-more/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/pPMlQmzV4mg" height="1" width="1"/>>>>>>--></div>
-</div>
-<div id="itemwrapper">
-<div id="item" onclick="showme('spec22');"><b>California sends a cease and desist order to the Bitcoin Foundation</b> - Licensing is required for money transmissions in-state; Bitcoin denies such activity.</div>
-<div id="spec22" style="display: none" data-guid="http://arstechnica.com/?p=294703"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/VvlXlcgP1Hw/">California sends a cease and desist order to the Bitcoin Foundation</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Nathan Mattise</span><br /><br /><!--<<<<<<div id="rss-wrap"> <p>California's Department of Financial Institutions has issued a cease and desist letter to the Bitcoin Foundation for "allegedly engaging in the business of money transmission without a license or proper authorization," <a href="http://www.forbes.com/sites/jonmatonis/2013/06/23/bitcoin-foundation-receives-cease-and-desist-order-from-california/">according to <em>Forbes</em></a>. The news comes after Bitcoin held its <a href="http://www.bitcoin2013.com/">"Future of Payments" conference</a> in San Jose last month. (The license information is available on <a href="http://dfi.ca.gov/Licensees/money_transmitter/default.html">CA.gov</a> and <em>Forbes</em> placed the cease and desist letter on <a href="http://www.scribd.com/doc/149335233/CA-State-Cease-and-Desist-May-30">Scribd</a>.)</p>
-<p>If found in violation, penalties range from $1,000 to $2,500 per violation per day plus criminal prosecution (which could lead to more fines and possibly imprisonment). Under federal law, it's also a felony "to engage in the business of money transmission without the appropriate state license or failure to register with the US Treasury Department," according to <em>Forbes</em>. Penalties under that law could be up to five years in prison and a $250,000 fine.</p>
-<p>Jon Matonis, a member of the Bitcoin Foundation's Board of Directors, wrote up the news for <em>Forbes</em>. Matonis defended the Bitcoin Foundation's actions during its time in California:</p>
-</div><p><a href="http://arstechnica.com/tech-policy/2013/06/california-sends-a-cease-and-desist-order-to-the-bitcoin-foundation/#p3">Read 3 remaining paragraphs</a> | <a href="http://arstechnica.com/tech-policy/2013/06/california-sends-a-cease-and-desist-order-to-the-bitcoin-foundation/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/VvlXlcgP1Hw" height="1" width="1"/>>>>>>--></div>
-</div>
-<div id="itemwrapper">
-<div id="item" onclick="showme('spec23');"><b>EPA steps away from fracking investigation in Wyoming</b> - EPA won’t even finalize its draft report as Wyoming takes control.</div>
-<div id="spec23" style="display: none" data-guid="http://arstechnica.com/?p=294275"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/aIB-di2MF-M/">EPA steps away from fracking investigation in Wyoming</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Scott K. Johnson</span><br /><br /><!--<<<<<<div id="rss-wrap"> <p>Last October, Ars published an <a href="http://arstechnica.com/science/2012/10/epa-fracking-investigation-in-wyoming-revisited-after-objections/">update</a> to a <a href="http://arstechnica.com/science/2011/12/how-the-epa-linked-fracking-to-contaminated-well-water/">US EPA investigation</a> linking natural gas production to groundwater contamination in Wyoming. On Thursday, the EPA <a href="http://yosemite.epa.gov/opa/admpress.nsf/0/DC7DCDB471DCFE1785257B90007377BF">announced</a> that it will step back from the investigation, ceding leadership to the State of Wyoming.</p>
-<p>The <a href="http://deq.state.wy.us/">Wyoming Department of Environmental Quality</a> and the <a href="http://wogcc.state.wy.us/">Wyoming Oil and Gas Conservation Commission</a> will further investigate groundwater conditions around Pavillion with support from the EPA, according to the press release. The scope of the investigation will be more limited, however. It'll now focus on a select number of private wells rather than larger questions about the possibility of gas production and hydraulic fracking impacts in shallow and deep groundwater. The State plans to additionally sample fourteen water supply wells, analyze existing data on the cement seals in gas production wells within a quarter mile of those water wells, and search for records of previous wastewater pits used to hold fracking fluid in that area. The results are scheduled to be finalized and released in September 2014.</p>
-<p>Some of that work will be paid for with funds from a $1.5 million grant that Encana, the gas exploration company operating in Pavillion, is giving to the <a href="http://www.conservewy.com/wnrf/">Wyoming Natural Resource Foundation</a>.</p>
-</div><p><a href="http://arstechnica.com/science/2013/06/epa-steps-away-from-fracking-investigation-in-wyoming/#p3">Read 4 remaining paragraphs</a> | <a href="http://arstechnica.com/science/2013/06/epa-steps-away-from-fracking-investigation-in-wyoming/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/aIB-di2MF-M" height="1" width="1"/>>>>>>--></div>
-</div>
-<div id="itemwrapper">
-<div id="item" onclick="showme('spec24');"><b>UX Spotlight: Behind the scenes of Tumblr’s design process</b> - A quick look at how UI features are developed by designers and engineers.</div>
-<div id="spec24" style="display: none" data-guid="http://arstechnica.com/?p=293841"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/GPZXmKfncbY/">UX Spotlight: Behind the scenes of Tumblr’s design process</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Cesar Torres</span><br /><br /><!--<<<<<<div id="rss-wrap">
-<div>
-      <img src="http://cdn.arstechnica.net/wp-content/uploads/2013/06/tum96-640x360.png"><div class="caption" style="font-size:0.8em">
-			<div class="caption-text">Tumblr Creative Director Peter Vidani</div>
-	
-			<div class="caption-credit">
-							Cesar Torres				</div>
-	  </div>
-  </div>
- <p>New York City noise blares right outside Tumblr’s office in the Flat Iron District in Manhattan. Once inside, the headquarters hum with a quiet intensity. I am surrounded by four dogs that employees have brought to the workspace today. Apparently, there are even more dogs lurking somewhere behind the perpendicular rows of desks. What makes the whole thing even spookier is that these dogs don’t bark or growl. It’s like someone’s told them that there are developers and designers at work, and somehow they’ve taken the cue.</p>
-<p>I’m here to see Tumblr’s Creative Director Peter Vidani who is going to pull the curtain back on the design process and user experience at Tumblr. And when I say design process, I don’t just mean color schemes or typefaces. I am here to see the process of interaction design: how the team at Tumblr comes up with ideas for the user interface on its website and its mobile apps. I want to find out how those ideas are shaped <span style="font-size: 14px;">into a final product </span><span style="font-size: 14px;">by their engineering team.</span></p>
-<p>Back in May, Yahoo announced it was <a href="http://arstechnica.com/information-technology/2013/05/yahoo-will-purchase-tumblr-for-1-1-billion-according-to-wsj-report/">acquiring Tumblr for $1.1 billion</a>. Yahoo indicated that Tumblr would continue to operate independently, though we will probably see a lot of content crossover between the millions of blog posts hosted by Tumblr and Yahoo’s search engine technology. It’s a little known fact that Yahoo has provided some useful tools for UX professionals and developers over the years through their <a href="http://developer.yahoo.com/ypatterns/">Design Pattern Library</a>, which shares some of Yahoo’s most successful and time-tested UI touches and interactions with Web developers. It’s probably too early to tell if Tumblr’s UI elements will filter back into these libraries. In the meantime, I talked to Vidani about how Tumblr UI features come to life.</p>
-</div><p><a href="http://arstechnica.com/gadgets/2013/06/ux-spotlight-behind-the-scenes-of-tumblrs-design-process/#p3">Read 9 remaining paragraphs</a> | <a href="http://arstechnica.com/gadgets/2013/06/ux-spotlight-behind-the-scenes-of-tumblrs-design-process/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/GPZXmKfncbY" height="1" width="1"/>>>>>>--></div>
-</div>
-<div id="itemwrapper">
-<div id="item" onclick="showme('spec25');"><b>Obama to reveal “plan to prep for the impacts of climate change” on Tuesday</b> - He'll deliver on his inaugural address by sharing how the US can "lead global efforts."</div>
-<div id="spec25" style="display: none" data-guid="http://arstechnica.com/?p=294665"><a class="titleLink" href="http://feeds.arstechnica.com/~r/arstechnica/everything/~3/09f2i-tVWaw/">Obama to reveal “plan to prep for the impacts of climate change” on Tuesday</a><br /><span class="authorInfo">from <a href="http://arstechnica.com">Ars Technica</a> by Nathan Mattise</span><br /><br /><!--<<<<<<div id="rss-wrap"> <figure class="video" style="width:640px"><iframe style="display:block" type="text/html" width="640" height="360" src="http://www.youtube-nocookie.com/embed/gcL3_zzgWeU#?start=0&amp;wmode=transparent" frameborder="0"></iframe><div class="caption" style="font-size:0.8em">
-<div class="caption-text">At the top of WhiteHouse.gov today, "Take Action on Climate Change."</div> </div></figure><p>On Tuesday at Georgetown University, President Barack Obama plans to deliver on his biggest promise from the 2013 inaugural address. "In my inaugural address, I pledged that America would respond to the growing threat of climate change for our children and future generations," the president states in a new video on WhiteHouse.gov. So this week, he'll lay out his vision of where the US needs to go with "a national plan to reduce carbon pollution, prep our country for the impacts of climate change, and lead global efforts to fight it."</p>
-<p>Obama <a href="http://www.nytimes.com/2013/01/22/us/politics/climate-change-prominent-in-obamas-inaugural-address.html?_r=0">made headlines</a> back in January for, among other things, making a bold, public promise for climate change policy. He devoted eight sentences of his inauguration speech to climate change—more than any other topic noted the <em>New York Times—</em>and did not sugarcoat it at the time. “Some may still deny the overwhelming judgment of science," Obama said. "But none can avoid the devastating impact of raging fires, and crippling drought, and more powerful storms.”</p>
-<p>In this new teaser video, Obama recognizes there is "n<strong></strong>o single step that can reverse the effects of climate change." He makes reference to the need for collaborative work from scientists and farmers, engineers and businesses, and all US citizens and employees alike. However, the video doesn't reveal any specifics. It leads to the <a href="http://whitehouse.gov/climate-change">WhiteHouse.gov/climate-change</a> page, which does the same.</p>
-</div><p><a href="http://arstechnica.com/science/2013/06/obama-to-reveal-plan-to-prep-for-the-impacts-of-climate-change-on-tuesday/#p3">Read 3 remaining paragraphs</a> | <a href="http://arstechnica.com/science/2013/06/obama-to-reveal-plan-to-prep-for-the-impacts-of-climate-change-on-tuesday/?comments=1">Comments</a></p><img src="http://feeds.feedburner.com/~r/arstechnica/everything/~4/09f2i-tVWaw" height="1" width="1"/>>>>>>--></div>
-</div>
-<div id="padding"></div>
 </body>

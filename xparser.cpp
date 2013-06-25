@@ -37,14 +37,19 @@ void XParser::dump()
     cout << "<html><head><meta charset=\"utf-8\">" << endl;
     cout << "<style type=\"text/css\">" 
 	<< "#itemwrapper { "
-	<< "border-bottom: 1px solid #CCCCCC; margin-left: 1in; "
+	<< "border-bottom: 1px solid #CCCCCC;  "
 	<< "font-family: arial, sans-serif; font-size: 80%; }"
-	<< "#item { cursor: pointer; height: 27px; overflow: hidden; white-space: nowrap; "
+	<< "#item { padding: 6px; cursor: pointer; height: 27px; overflow: hidden; white-space: nowrap; "
 	<< " line-height: 27px;  color: #999999 } " 
 	<< "#item b { color: black; font-weight: bold; } "
-    << "a.titleLink { color: #16f; font-size: 18px; font-weight: bold; text-decoration: none } "
-    << "#padding { height: 100%; } "
-    << ".authorInfo { color: #777777 } "
+    << "a.titleLink { color: #16f; font-size: 18px; font-weight: bold; text-decoration: none;} "
+    << ".content { display: none; padding: 10px; height: auto; overflow: auto; } "
+    << "#padding { height: 0; } "
+    << ".authorInfo { color: #777777; margin-bottom: 10px; } "
+    << ".navbar { position: absolute; border-right: solid 1px #CCCCCC; height: 100%; overflow: auto; width: 200px;  float: left; }"
+    << ".wrapall { width: 100%; height: 100%} "
+    << ".wrapcontent { padding-left: 204px;  position: relative;  width: auto; height: 100%; overflow: auto; }"
+    << "body { overflow: hidden } "
 	<< "</style>" << endl;
     cout << "<script type=\"text/javascript\">"
 	<< "var shown; function showme(which) {"
@@ -60,23 +65,30 @@ void XParser::dump()
 	<< " document.onkeypress = function(e) { if (e.charCode == 74 || e.charCode == 106) { mj(); } else if (e.charCode == 75 || e.charCode == 107) { mk(); }  }; "
 	<< "</script>";
     cout << "</head><body>" << endl;
-    cout << this->title << endl;
-    cout << this->link << endl;
-    cout << this->description << endl;
+    //cout << this->title << endl;
+    //cout << this->link << endl;
+    //cout << this->description << endl;
+    cout << "<div class=\"wrapall\">" << endl;
+    cout << "<div class=\"navbar\">Navbar goes here.</div>" << endl
+     << "<div class=\"wrapcontent\">";
     for (unsigned int i=0; i < this->items.size(); i++)
     {
         this->items[i].dump();
     }
-cout << "<div id=\"padding\"></div>" << endl;
+cout << "<div id=\"padding\"></div></div>" << endl;
+    cout << "</div>" << endl;
     cout << "</body>" << endl;
 }
 
 
 subItem::subItem(pugi::xml_node node, string publisher, string publink)
 {
+    struct tm tm[1] = {{0}};
+    strptime(node.child_value("pubDate"), "%a, %d %b %Y %H:%M:%S %z", tm);
+
     this->title = node.child_value("title");
     this->link = node.child_value("link");
-    this->pubDate = node.child_value("pubDate");
+    this->pubDate = tm->tm_gmtoff;
     this->guid = node.child_value("guid");
     this->description = node.child_value("description");
     this->content = node.child_value("content:encoded");
@@ -92,9 +104,9 @@ cout << "<div id=\"itemwrapper\">" << endl;
     cout << "<div id=\"item\" onclick=\"showme('spec" << specid << "');\">"
 	<< "<b>" << this->title << "</b> - " << this->description 
     << "</div>" << endl;
-    cout << "<div id=\"spec" << specid << "\" style=\"display: none\" data-guid=\"" << this->guid << "\">" 
+    cout << "<div class=\"content\" id=\"spec" << specid << "\"  data-guid=\"" << this->guid << "\">" 
 	<< "<a class=\"titleLink\" href=\"" << this->link << "\">" << this->title << "</a><br />"
-    << "<span class=\"authorInfo\">from <a href=\"" << this->publink << "\">" << this->publisher << "</a> by " << this->creator << "</span><br /><br />"
+    << "<span class=\"authorInfo\">from <a href=\"" << this->publink << "\">" << this->publisher << "</a> by " << this->creator << "</span><br />"
     << "<!--<<<<<"
     << this->content 
     << ">>>>>-->"

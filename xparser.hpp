@@ -9,7 +9,8 @@
 class subItem
 {
     private: 
-        std::string title, link, pubDate, guid, description, content, creator, publisher, publink;
+        std::string title, link, guid, description, content, creator, publisher, publink;
+        unsigned long pubDate; 
     public:
         subItem(pugi::xml_node node, std::string publisher, std::string publink);
         void dump();
