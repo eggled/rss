@@ -1,0 +1,59 @@
+#itemwrapper { 
+    border-bottom: 1px solid #CCCCCC;
+    font-family: arial, sans-serif;
+    font-size: 80%;
+ }
+ #item { 
+     padding: 6px;
+     cursor: pointer;
+     height: 27px;
+     overflow: hidden;
+     white-space: nowrap;
+     line-height: 27px;
+     color: #999999 
+}
+#item b {
+    color: black;
+    font-weight: bold;
+ }
+ a.titleLink {
+     color: #16f;
+     font-size: 18px;
+     font-weight: bold;
+     text-decoration: none;
+} 
+.content {
+    display: none;
+    padding: 10px;
+    height: auto;
+    overflow: auto;
+ }
+ #padding {
+     height: 0;
+ }
+ .authorInfo {
+     color: #777777;
+     margin-bottom: 10px;
+ }
+ .navbar {
+     position: absolute;
+     border-right: solid 1px #CCCCCC;
+     height: 100%;
+     overflow: auto;
+     width: 200px;
+     float: left;
+ }
+ .wrapall {
+     width: 100%;
+     height: 100%
+}
+.wrapcontent {
+    padding-left: 204px;
+    position: relative;
+    width: auto;
+    height: 100%;
+    overflow: auto;
+ }
+ body {
+     overflow: hidden
+ } 

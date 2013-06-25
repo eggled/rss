@@ -1,5 +1,6 @@
 #include "fetcher.hpp"
 #include "xparser.hpp"
+#include "display.hpp"
 #include <iostream>
 #include <fstream>
 
@@ -11,10 +12,12 @@ int main()
     urls.open("rss_urls.txt");
 
     string line;
+    Display display;
     while (getline(urls, line))
     {
         Fetcher g(line);
-        XParser(g.fetch()).dump();
+        display.add(XParser(g.fetch()));
     }
+    display.printpage();
     return 0;
 }

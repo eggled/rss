@@ -13,7 +13,7 @@ class subItem
         unsigned long pubDate; 
     public:
         subItem(pugi::xml_node node, std::string publisher, std::string publink);
-        void dump();
+        pugi::xml_node generate();
 };
 
 class XParser
@@ -26,7 +26,7 @@ class XParser
     public:
         XParser(std::string input);
 
-        void dump();
+        std::vector <pugi::xml_node> generate();
 };
 
 #endif
