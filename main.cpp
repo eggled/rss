@@ -60,8 +60,10 @@ int main()
                 {
                     CGI nam;
                     nam.process_request(request_string.substr(2));
-                    cerr << nam.get_value("Feed") << endl;
-                    display.printpage();
+                    if (nam.get_value("mark-read").length())
+                    {
+                        cerr << "Marking " << nam.get_value("mark-read") << " as read." << endl;
+                    }
                 } else
                 {
                     request_string = "html" + request_string;

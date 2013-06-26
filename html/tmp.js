@@ -1,4 +1,20 @@
 var shown;
+
+function load(url) // eventually allow a callback
+{
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState < 4)
+            return;
+        if (xmlhttp.status != 200)
+            return;
+        if (xmlhttp.readyState == 4)
+            return; // This wil probably be a callback later.
+    };
+    xmlhttp.open('GET',url, true);
+    xmlhttp.send('');
+}
+
 function showme(which) 
 {
     if (document.getElementById(which)) 
@@ -41,6 +57,7 @@ function showme(which)
         {
             //FIXME this is now read ... use data-guid to record in the database.
             //alert('marking ' + shown.getAttribute('data-guid') + ' as read.');
+            load('/?mark-read=' + encodeURIComponent(shown.getAttribute('data-guid')));
             bar.style.backgroundColor='#EEEEEE';
         }
     }

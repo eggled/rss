@@ -72,7 +72,6 @@ void CGI::process_request(string request)
         }
         key = urldecode(key);
         value = urldecode(value);
-        cerr << "Found " << key << "=>" << value << endl;
         this->data[key] = value;
     }
 }
