@@ -21,7 +21,6 @@ display.o: display.cpp display.hpp xparser.hpp pugixml.hpp
 
 all: fetcher.o main.o pugixml.o xparser.o display.o 
 	g++ ${CFLAGS} ${LDFLAGS} fetcher.o main.o pugixml.o xparser.o display.o -o rssgen
-	./rssgen > tmp.html
 
 clean:
 	rm -f fetcher.o main.o pugixml.o xparser.o display.o rssgen 
