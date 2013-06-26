@@ -77,6 +77,7 @@ int main()
                 }
             }
         }
+        serv.do_shutdown();
 
     }
     return 0;

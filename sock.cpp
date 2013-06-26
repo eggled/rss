@@ -46,13 +46,19 @@ int WebServer::do_accept(int do_fork)
     }
     struct sockaddr_in cli_addr;
     socklen_t clilen = sizeof(cli_addr);
-    int clisockfd = accept(this->sockfd, (struct sockaddr *) &cli_addr, &clilen);
-    if (clisockfd < 0)
+    this->clisockfd = accept(this->sockfd, (struct sockaddr *) &cli_addr, &clilen);
+    if (this->clisockfd < 0)
     {
         perror("accept");
         throw errno;
     }
-    dup2(clisockfd, STDOUT_FILENO);
-    dup2(clisockfd, STDIN_FILENO);
+    dup2(this->clisockfd, STDOUT_FILENO);
+    dup2(this->clisockfd, STDIN_FILENO);
     return 0;
 }
+
+void WebServer::do_shutdown()
+{
+    shutdown(this->clisockfd, SHUT_RDWR);
+}
+

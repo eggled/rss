@@ -9,12 +9,13 @@
 
 class WebServer
 {
-    int sockfd, portno;
+    int sockfd, portno, clisockfd;
     struct sockaddr_in serv_addr;
 
     public:
     WebServer(int port);
     int do_accept(int do_fork);
+    void do_shutdown();
 };
 
 #endif
