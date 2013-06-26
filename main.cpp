@@ -1,8 +1,13 @@
 #include "fetcher.hpp"
 #include "xparser.hpp"
 #include "display.hpp"
+#include "sock.hpp"
 #include <iostream>
 #include <fstream>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <errno.h>
+#include <string.h>
 
 using namespace std;
 
@@ -18,14 +23,61 @@ int main()
         Fetcher g(line);
         display.add(XParser(g.fetch()));
     }
-while (getline(cin, line))
-{
-	if (line.length() == 0) break;
-	if (line.length() == 1 and 13 == line.c_str()[0]) break;
-	cerr << "Got line length " << line.length() << (int) line.c_str()[0] << line << endl;
-}
-cout << "HTTP/1.1 200 OK\r\n";
-    cout << "Content-type: text/html\r\n\r\n";
-    display.printpage();
+    WebServer serv(8000);
+    int childcount = 0;
+    int spawn_children = 1;
+    while (1)
+    {
+        if (serv.do_accept(spawn_children))
+        {
+            int status;
+            if (childcount++ >= 10)
+            {
+                wait(&status);
+                childcount--;
+            }
+            continue;
+        }
+        spawn_children = 0;
+
+        string request_string;
+
+        
+        while (getline(cin, line))
+        {
+            line = line.substr(0, line.find('\r'));
+        	if (line.length() == 0) break;
+            if (line.compare(0,4,"GET ") == 0)
+            {
+                request_string = line.substr(4, line.find(" ", 4) - 4);
+                if (request_string.compare("/") == 0)
+                {
+                    cout << "HTTP/1.1 200 OK\r\n";
+                    cout << "Content-type: text/html\r\n\r\n";
+                    display.printpage();
+                } else {
+                    request_string = "html" + request_string;
+                    ifstream file_dump(request_string.c_str());
+                    if (file_dump.is_open())
+                    {
+                        cout << "HTTP/1.1 200 OK\r\n";
+                        cout << "Content-type: text/plain\r\n\r\n";
+                        while (getline(file_dump, line))
+                        {
+                            cout << line << endl;
+                        }
+                        file_dump.close();
+                    }
+                    else
+                    {
+                        cout << "HTTP/1.1 404 " << "Not found\r\n";
+                        cout << "Content-type: text/plain\r\n\r\n";
+                        cout << "404: File not found (" << request_string << ")" << endl;
+                    }
+                }
+            }
+        }
+
+    }
     return 0;
 }
