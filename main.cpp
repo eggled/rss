@@ -2,6 +2,7 @@
 #include "xparser.hpp"
 #include "display.hpp"
 #include "sock.hpp"
+#include "cgi.hpp"
 #include <iostream>
 #include <fstream>
 #include <sys/types.h>
@@ -31,7 +32,7 @@ int main()
         if (serv.do_accept(spawn_children))
         {
             int status;
-            if (childcount++ >= 10)
+            if (childcount++ >= 20)
             {
                 wait(&status);
                 childcount--;
@@ -55,7 +56,14 @@ int main()
                     cout << "HTTP/1.1 200 OK\r\n";
                     cout << "Content-type: text/html\r\n\r\n";
                     display.printpage();
-                } else {
+                } else if (0 == request_string.compare(0,2,"/?")) // request
+                {
+                    CGI nam;
+                    nam.process_request(request_string.substr(2));
+                    cerr << nam.get_value("Feed") << endl;
+                    display.printpage();
+                } else
+                {
                     request_string = "html" + request_string;
                     ifstream file_dump(request_string.c_str());
                     if (file_dump.is_open())
