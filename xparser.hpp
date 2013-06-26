@@ -11,6 +11,7 @@ class subItem
     private: 
         std::string title, link, guid, description, content, creator, publisher, publink;
         unsigned long pubDate; 
+	pugi::xml_document* doc;
     public:
         subItem(pugi::xml_node node, std::string publisher, std::string publink);
         pugi::xml_node generate();

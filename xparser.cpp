@@ -10,9 +10,8 @@ using namespace std;
 XParser::XParser(string input)
 {
     pugi::xml_document doc;
-    //pugi::xml_parse_result result = doc.load(input.c_str());
     istringstream iss(input);
-    pugi::xml_parse_result result = doc.load(iss, pugi::parse_default, pugi::encoding_utf8);
+    doc.load(iss, pugi::parse_default, pugi::encoding_utf8);
     pugi::xml_node channel = doc.child("rss").child("channel");
 
     this->title = string(channel.child_value("title"));
@@ -61,13 +60,13 @@ subItem::subItem(pugi::xml_node node, string publisher, string publink)
 pugi::xml_node subItem::generate()
 {
     static int spec = 0;
+    this->doc = new pugi::xml_document;
+    this->doc->load("");
     ostringstream idval, onclickfunc, creatorstring, outputdata;
     idval << "spec" << ++spec;
-    onclickfunc << "showme('" << idval << "')";
+    onclickfunc << "showme('" << idval.str() << "')";
 
-    // FIXME: This is a mess... I'll have to return a full document, apparently.
-    pugi::xml_node retval;
-    retval.set_name("div");
+    pugi::xml_node retval = this->doc->append_child("div");
     retval.append_attribute("id").set_value("itemwrapper");
 
     pugi::xml_node node = retval.append_child("div");
