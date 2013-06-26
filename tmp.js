@@ -13,10 +13,23 @@ function showme(which)
             }
         }
         shown = document.getElementById(which);
-        var data = shown.innerHTML.toString();
-        data = data.replace('<!--<<<<<', '');
-        data = data.replace('>>>>>-->', '');
-        shown.innerHTML = data;
+	var data = "";
+	
+	var node = shown.firstChild;
+	while (node)
+	{
+		if (node.nodeType == 3)
+		{
+			data += node.nodeValue;
+			var newnode = node.nextSibling;
+			shown.removeChild(node);
+			node = newnode;
+		} else {
+			node = node.nextSibling;
+		}
+	}
+
+        shown.innerHTML += data;
         shown.style.display = 'block';
         shown.parentNode.scrollIntoView(1);
         var bar = shown.parentNode.firstChild;

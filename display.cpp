@@ -18,6 +18,7 @@ Display::Display()
     node = head.append_child("script");
     node.append_attribute("type").set_value("text/javascript");
     node.append_attribute("src").set_value("tmp.js");
+    node.text().set(" ");
 
     node = document.child("html").append_child("body");
     node = node.append_child("div");
@@ -25,6 +26,7 @@ Display::Display()
 
     this->navbarnode = node.append_child("div");
     this->navbarnode.append_attribute("class").set_value("navbar");
+    this->navbarnode.text().set(" ");
 
     this->bodynode = node.append_child("div");
     this->bodynode.append_attribute("class").set_value("wrapcontent");
@@ -43,13 +45,10 @@ void Display::generate()
     generated = 1;
     for (unsigned int i = 0; i < this->members.size(); i++)
     {
-        cout << "looking at member " << i << endl;
         vector <pugi::xml_node> nodelist = this->members[i].generate();
         for (unsigned int j = 0; j < nodelist.size(); j++)
         {
-            cout << "\tlooking at member " << j << endl;
             this->bodynode.append_copy(nodelist[j]);
-            cout << "\tappended " << nodelist[j].name();
         }
     }
 
@@ -58,6 +57,6 @@ void Display::generate()
 void Display::printpage()
 {
     this->generate();
-    this->document.save(cout);
+    this->document.save(cout, "\t", (pugi::format_default | pugi::format_no_declaration) & (~pugi::format_no_escapes));
 }
 
