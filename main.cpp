@@ -64,7 +64,9 @@ int main()
                     if (nam.get_value("content").length())
                     {
 Database g;
-g.getcontent(nam.get_value("content"));
+                    cout << "HTTP/1.1 200 OK\r\n";
+                    cout << "Content-type: text/html\r\n\r\n";
+cout << g.getcontent(nam.get_value("content"));
                     }
                 } else
                 {

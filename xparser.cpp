@@ -5,6 +5,7 @@
 #include <sstream>
 #include <iostream>
 #include <istream>
+#include <fstream>
 
 using namespace std;
 
@@ -54,6 +55,12 @@ subItem::subItem(pugi::xml_node node, string publisher, string publink)
     this->guid = node.child_value("guid");
     this->description = node.child_value("description");
     this->content = node.child_value("content:encoded");
+    Database g;
+    string fname = g.newfname(this->guid);
+    ofstream output(fname.c_str());
+    output << this->content;
+    output.close();
+    this->content = ("html/" + fname);
     this->creator = node.child_value("dc:creator");
     this->publisher = publisher;
     this->publink = publink;

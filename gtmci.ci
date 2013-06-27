@@ -1,4 +1,4 @@
 markread    :void  markread^manip(I:gtm_char_t*)
 isread    :gtm_int_t*  isread^manip(I:gtm_char_t*)
 getfname :void getfname^manip(I:gtm_char_t*, IO:gtm_char_t*)
-setfname :void setfname^manip(I:gtm_char_t*, IO:gtm_char_t*)
+newfname :void newfname^manip(I:gtm_char_t*, IO:gtm_char_t*)

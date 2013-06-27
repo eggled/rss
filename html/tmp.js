@@ -35,9 +35,10 @@ function showme(which)
             }
         }
         shown = document.getElementById(which);
-	var localshown = shown;
-	load('GET /?content=' + encodeURIComponent(shown.getAttribute('data-guid')), function (txt) { localshown.innerHTML = txt; localshown.style.display = 'block'; localshown.parentNode.scrollIntoView(1);} );
-
+        var localshown = shown;
+        load('/?content=' + encodeURIComponent(shown.getAttribute('data-guid')), function (txt) { localshown.innerHTML = txt; } );
+        shown.style.display = 'block'; 
+        shown.parentNode.scrollIntoView(1);
         shown.style.display = 'block';
         shown.parentNode.scrollIntoView(1);
         var bar = shown.parentNode.firstChild;

@@ -14,6 +14,9 @@ class Database
         Database();
         void mark_read(std::string id);
         int is_read(std::string id);
+        std::string  newfname(std::string id);
+        std::string getfname(std::string id);
+        std::string getcontent(std::string id);
 };
 
 #endif
