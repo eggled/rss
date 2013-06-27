@@ -70,6 +70,7 @@ cout << g.getcontent(nam.get_value("content"));
                     }
                 } else
                 {
+                    //FIXME - this obviously allows for arbitrary files to be dumped
                     request_string = "html" + request_string;
                     ifstream file_dump(request_string.c_str());
                     if (file_dump.is_open())
