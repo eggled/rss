@@ -13,6 +13,7 @@ class Database
     public:
         Database();
         void mark_read(std::string id);
+        int is_read(std::string id);
 };
 
 #endif

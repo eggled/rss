@@ -28,7 +28,7 @@ WebServer::WebServer(int port)
     {
         perror("bind");
     }
-    listen(this->sockfd, 10);
+    listen(this->sockfd, 5);
 }
 
 int WebServer::do_accept(int do_fork)

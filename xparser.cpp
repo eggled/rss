@@ -1,5 +1,6 @@
 #include "xparser.hpp"
 #include "pugixml.hpp"
+#include "database.hpp"
 #include <string>
 #include <sstream>
 #include <iostream>
@@ -62,6 +63,8 @@ pugi::xml_node subItem::generate()
     static int spec = 0;
     this->doc = new pugi::xml_document;
     this->doc->load("");
+if (Database().is_read(this->guid))
+return (pugi::xml_node ) NULL;
     ostringstream idval, onclickfunc, creatorstring, outputdata;
     idval << "spec" << ++spec;
     onclickfunc << "showme('" << idval.str() << "')";

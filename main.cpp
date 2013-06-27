@@ -33,7 +33,7 @@ int main()
         if (serv.do_accept(spawn_children))
         {
             int status;
-            if (childcount++ >= 20)
+            if (childcount++ >= 5)
             {
                 wait(&status);
                 childcount--;

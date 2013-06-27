@@ -41,14 +41,19 @@ void Display::add(XParser feed)
 
 void Display::generate()
 {
-    static int generated = 0;
-    if (generated) return;
-    generated = 1;
+pugi::xml_node p = this->bodynode.parent();
+p.remove_child(this->bodynode);
+    this->bodynode = p.append_child("div");
+    this->bodynode.append_attribute("class").set_value("wrapcontent");
     for (unsigned int i = 0; i < this->members.size(); i++)
     {
         vector <pugi::xml_node> nodelist = this->members[i].generate();
         for (unsigned int j = 0; j < nodelist.size(); j++)
         {
+if (NULL == nodelist[j])
+{
+continue;
+}
             this->bodynode.append_copy(nodelist[j]);
         }
     }
