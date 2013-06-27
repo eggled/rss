@@ -12,8 +12,12 @@ newfname(g,file)
  s ^ART(g,"file")=file
  q
 getfname(g,file)
+ s file=""
+ q:0=$d(^ART(g,"file"))
  s file=^ART(g,"file")
  q
 setfields(g,title,link,pubDate,description,creator,publisher,publink)
  s ^ART(g,"title")=title,^ART(g,"link")=link,^ART(g,"pubDate")=pubDate,^ART(g,"description")=description,^ART(g,"creator")=creator,^ART(g,"publisher")=publisher,^ART(g,"publink")=publink
  q
+reset
+ k ^ART,^IND

@@ -41,7 +41,7 @@ Database::Database()
     atexit((void (*)())&gtm_exit);
 }
 
-void Database::mark_read(string id)
+void Database::markread(string id)
 {
 	gtm_char_t * arg = string_to_gtm_char_t(id);
 	gtm_status_t stat = gtm_ci("markread",arg);
@@ -50,7 +50,7 @@ void Database::mark_read(string id)
 	{
 		char buf[1024];
 		gtm_zstatus(buf, 1023);
-		cerr << "Failed to run callin: " << buf << endl;
+		cerr << "Failed to run callin markread: " << buf << endl;
 	}
 }
 
@@ -64,7 +64,7 @@ int Database::is_read(string id)
 	{
 		char buf[1024];
 		gtm_zstatus(buf, 1023);
-		cerr << "Failed to run callin: " << buf << endl;
+		cerr << "Failed to run callin isread: " << buf << endl;
 	}
 	return (int) ret;
 }
@@ -77,12 +77,13 @@ string Database::getfname(string id)
     {
 		char buf[1024];
 		gtm_zstatus(buf, 1023);
-		cerr << "Failed to run callin: " << buf << endl;
+		cerr << "Failed to run callin getfname: " << buf << endl;
     }
     free(idarg);
     string retval = filename;
     free(filename);
-    retval = "html/doc/" + retval;
+    if (0 < retval.length())
+	    retval = "html/doc/" + retval;
     return retval;
 }
 
@@ -95,7 +96,7 @@ string Database::newfname(string id)
     {
 		char buf[1024];
 		gtm_zstatus(buf, 1023);
-		cerr << "Failed to run callin: " << buf << endl;
+		cerr << "Failed to run callin newfname: " << buf << endl;
     }
     free(idarg);
     string retval = filename;
@@ -132,7 +133,7 @@ void Database::setfields(string guid, string title, string link, unsigned long p
     {
         char buf[1024];
         gtm_zstatus(buf, 1023);
-        cerr << "Failed to run callin: " << buf << endl;
+        cerr << "Failed to run callin setfields: " << buf << endl;
     }
     free(g_guid);
     free(g_title);
