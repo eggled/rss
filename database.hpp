@@ -12,7 +12,6 @@ class Database
     
     public:
         Database();
-        ~Database();
         void mark_read(std::string id);
 };
 

@@ -3,6 +3,7 @@
 #include "display.hpp"
 #include "sock.hpp"
 #include "cgi.hpp"
+#include "database.hpp"
 #include <iostream>
 #include <fstream>
 #include <sys/types.h>
@@ -62,7 +63,8 @@ int main()
                     nam.process_request(request_string.substr(2));
                     if (nam.get_value("mark-read").length())
                     {
-                        cerr << "Marking " << nam.get_value("mark-read") << " as read." << endl;
+Database g;
+g.mark_read(nam.get_value("mark-read"));
                     }
                 } else
                 {
