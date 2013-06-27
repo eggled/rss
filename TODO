@@ -1,0 +1,4 @@
+- instead of dumping the encoded text through pugi, leave the content divs empty. Have showme() populate the div through ajax
+- This means the content should live in the database, probably. Maybe on the filesystem, though, with a pointer in the database. That guarantees I'll avoid any overflow errors
+- 
+- 

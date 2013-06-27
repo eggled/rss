@@ -1,6 +1,6 @@
 var shown;
 
-function load(url) // eventually allow a callback
+function load(url, cb) // eventually allow a callback
 {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
@@ -8,8 +8,14 @@ function load(url) // eventually allow a callback
             return;
         if (xmlhttp.status != 200)
             return;
-        if (xmlhttp.readyState == 4)
+	if (xmlhttp.readyState == 4)
+	{
+	    if (cb)
+	    {
+		    cb(xmlhttp.responseText);
+	    }
             return; // This wil probably be a callback later.
+	}
     };
     xmlhttp.open('GET',url, true);
     xmlhttp.send('');
@@ -29,23 +35,9 @@ function showme(which)
             }
         }
         shown = document.getElementById(which);
-	var data = "";
-	
-	var node = shown.firstChild;
-	while (node)
-	{
-		if (node.nodeType == 3)
-		{
-			data += node.nodeValue;
-			var newnode = node.nextSibling;
-			shown.removeChild(node);
-			node = newnode;
-		} else {
-			node = node.nextSibling;
-		}
-	}
+	var localshown = shown;
+	load('GET /?content=' + encodeURIComponent(shown.getAttribute('data-guid')), function (txt) { localshown.innerHTML = txt; localshown.style.display = 'block'; localshown.parentNode.scrollIntoView(1);} );
 
-        shown.innerHTML += data;
         shown.style.display = 'block';
         shown.parentNode.scrollIntoView(1);
         var bar = shown.parentNode.firstChild;
@@ -55,9 +47,6 @@ function showme(which)
         }
         if (bar) 
         {
-            //FIXME this is now read ... use data-guid to record in the database.
-            //alert('marking ' + shown.getAttribute('data-guid') + ' as read.');
-            load('/?mark-read=' + encodeURIComponent(shown.getAttribute('data-guid')));
             bar.style.backgroundColor='#EEEEEE';
         }
     }

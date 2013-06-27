@@ -99,7 +99,7 @@ return (pugi::xml_node ) NULL;
     creatorstring << " by " << this->publink;
     span.append_child("span").text().set(creatorstring.str().c_str());
 
-    outputdata << this->content ;
-    node.append_child(pugi::node_pcdata).set_value(outputdata.str().c_str());
+    //outputdata << this->content ;
+    //node.append_child(pugi::node_pcdata).set_value(outputdata.str().c_str());
     return retval;
 }

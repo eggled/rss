@@ -57,4 +57,8 @@ int Database::is_read(string id)
 	}
 	return (int) ret;
 }
-
+string Database::getfname(string id)
+{
+	gtm_char_t * arg;
+	arg = (gtm_char_t*) malloc(PATH_MAX * sizeof(gtm_char_t));
+	

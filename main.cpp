@@ -61,10 +61,10 @@ int main()
                 {
                     CGI nam;
                     nam.process_request(request_string.substr(2));
-                    if (nam.get_value("mark-read").length())
+                    if (nam.get_value("content").length())
                     {
 Database g;
-g.mark_read(nam.get_value("mark-read"));
+g.getcontent(nam.get_value("content"));
                     }
                 } else
                 {
