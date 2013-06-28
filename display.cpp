@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "display.hpp"
+#include "database.hpp"
 
 using namespace std;
 
@@ -34,35 +35,50 @@ Display::Display()
 
 }
 
-void Display::add(XParser feed)
+void Display::update()
 {
-    this->members.push_back(feed);
-}
-
-void Display::generate()
-{
-pugi::xml_node p = this->bodynode.parent();
-p.remove_child(this->bodynode);
-    this->bodynode = p.append_child("div");
-    this->bodynode.append_attribute("class").set_value("wrapcontent");
-    for (unsigned int i = 0; i < this->members.size(); i++)
+    Database g;
+    string s_id = "", s_title, s_link, s_publink, s_publisher;
+    int spec = 0;
+    while (g.getmetadata(s_id, s_title, s_link, s_publink, s_publisher))
     {
-        vector <pugi::xml_node> nodelist = this->members[i].generate();
-        for (unsigned int j = 0; j < nodelist.size(); j++)
-        {
-if (NULL == nodelist[j])
-{
-continue;
-}
-            this->bodynode.append_copy(nodelist[j]);
-        }
-    }
+        ostringstream idval, onclickfunc, creatorstring, outputdata;
+        idval << "spec" << ++spec;
+        onclickfunc << "showme('" << idval.str() << "')";
+        pugi::xml_node item = this->bodynode.append_child("div");
+        item.append_attribute("id").set_value("itemwrapper");
+        pugi::xml_node node = item.append_child("div");
+        node.append_attribute("id").set_value("item");
+        node.append_attribute("onclick").set_value(onclickfunc.str().c_str());
 
+        node.append_child("b").text().set(s_title.c_str());
+
+        node = item.append_child("div");
+        node.append_attribute("class").set_value("content");
+        node.append_attribute("id").set_value(idval.str().c_str());
+        node.append_attribute("data-guid").set_value(s_id.c_str());
+
+        pugi::xml_node link = node.append_child("a");
+        link.append_attribute("class").set_value("titleLink");
+        link.append_attribute("href").set_value(s_link.c_str());
+        link.text().set(s_title.c_str());
+
+        node.append_child("br");
+
+        pugi::xml_node span = node.append_child("span");
+        span.append_attribute("class").set_value("authorInfo");
+        span.append_child("span").text().set("from ");
+        link = span.append_child("a");
+        link.append_attribute("href").set_value(s_publink.c_str());
+        link.text().set(s_publisher.c_str());
+        creatorstring << " by " << s_publink;
+        span.append_child("span").text().set(creatorstring.str().c_str());
+
+    }
 }
 
 void Display::printpage()
 {
-    this->generate();
     this->document.save(cout, "\t", (pugi::format_default | pugi::format_no_declaration) & (~pugi::format_no_escapes));
 }
 

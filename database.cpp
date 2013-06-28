@@ -117,6 +117,36 @@ string Database::getcontent(string id)
     return retval;
 }
 
+bool Database::getmetadata(string &id, string &title, string &link, string &publink, string &publisher)
+{
+    gtm_char_t *cid = string_to_gtm_char_t(id);
+    gtm_char_t *ctitle = string_to_gtm_char_t(title);
+    gtm_char_t *clink = string_to_gtm_char_t(link);
+    gtm_char_t *cpublink = string_to_gtm_char_t(publink);
+    gtm_char_t *cpublisher = string_to_gtm_char_t(publisher);
+
+    if (0 != gtm_ci("getmetadata", cid, ctitle, clink, cpublink, cpublisher))
+    {
+		char buf[1024];
+		gtm_zstatus(buf, 1023);
+		cerr << "Failed to run callin getmetadata: " << buf << endl;
+    }
+
+    id = cid;
+    title = ctitle;
+    link = clink;
+    publink = cpublink;
+    publisher = cpublisher;
+    free(cid);
+    free(ctitle);
+    free(clink);
+    free(cpublink);
+    free(cpublisher);
+    if (0 == id.length())
+        return 0;
+    return 1;
+}
+
 void Database::setfields(string guid, string title, string link, unsigned long pubDate, string description, string creator, string publisher, string publink)
 {
     gtm_char_t *g_guid = string_to_gtm_char_t(guid);

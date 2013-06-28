@@ -15,16 +15,28 @@ using namespace std;
 
 int main()
 {
-    ifstream urls;
-    urls.open("rss_urls.txt");
 
-    string line;
     Display display;
-    while (getline(urls, line))
+    int pid;
+    if ((pid = fork())  < 0)
     {
-        Fetcher g(line);
-        display.add(XParser(g.fetch()));
+        perror("Failed to fork");
+        return 1;
+    } else if (pid == 0) {
+        while (1)
+        {
+            ifstream urls;
+            urls.open("rss_urls.txt");
+            string line;
+            while (getline(urls, line))
+            {
+                Fetcher g(line);
+                XParser(g.fetch());
+            }
+            sleep(60);
+        }
     }
+
     WebServer serv(8000);
     int childcount = 0;
     int spawn_children = 1;
@@ -42,7 +54,7 @@ int main()
         }
         spawn_children = 0;
 
-        string request_string;
+        string line, request_string;
 
         
         while (getline(cin, line))
@@ -56,6 +68,7 @@ int main()
                 {
                     cout << "HTTP/1.1 200 OK\r\n";
                     cout << "Content-type: text/html\r\n\r\n";
+                    display.update();
                     display.printpage();
                 } else if (0 == request_string.compare(0,2,"/?")) // request
                 {
@@ -72,17 +85,26 @@ g.markread(nam.get_value("content"));
                 } else
                 {
                     //FIXME - this obviously allows for arbitrary files to be dumped
-                    request_string = "html" + request_string;
-                    ifstream file_dump(request_string.c_str());
-                    if (file_dump.is_open())
+                    if (0 == request_string.compare("/tmp.js") || 0 == request_string.compare("/tmp.css"))
                     {
-                        cout << "HTTP/1.1 200 OK\r\n";
-                        cout << "Content-type: text/plain\r\n\r\n";
-                        while (getline(file_dump, line))
+                        request_string = "html" + request_string;
+                        ifstream file_dump(request_string.c_str());
+                        if (file_dump.is_open())
                         {
-                            cout << line << endl;
+                            cout << "HTTP/1.1 200 OK\r\n";
+                            cout << "Content-type: text/plain\r\n\r\n";
+                            while (getline(file_dump, line))
+                            {
+                                cout << line << endl;
+                            }
+                            file_dump.close();
                         }
-                        file_dump.close();
+                        else
+                        {
+                            cout << "HTTP/1.1 404 " << "Not found\r\n";
+                            cout << "Content-type: text/plain\r\n\r\n";
+                            cout << "404: File not found (" << request_string << ")" << endl;
+                        }
                     }
                     else
                     {
