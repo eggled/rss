@@ -35,8 +35,11 @@ function showme(which)
             }
         }
         shown = document.getElementById(which);
-        var localshown = shown;
-        load('/?content=' + encodeURIComponent(shown.getAttribute('data-guid')), function (txt) { localshown.innerHTML = txt; } );
+        if (! shown.already_displayed)
+        {
+            var localshown = shown;
+            load('/?content=' + encodeURIComponent(shown.getAttribute('data-guid')), function (txt) { if (localshown.already_displayed) return; localshown.already_displayed = 1; localshown.innerHTML += txt; } );
+        }
         shown.style.display = 'block'; 
         shown.parentNode.scrollIntoView(1);
         shown.style.display = 'block';

@@ -108,7 +108,6 @@ string Database::newfname(string id)
 string Database::getcontent(string id)
 {
     string file = this->getfname(id);
-    file = "html/doc/" + file;
     string retval;
     char buffer [4096];
     ifstream fs(file.c_str());
