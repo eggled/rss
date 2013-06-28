@@ -1,3 +1,4 @@
 - javascript for determining "already loaded" can go away... append a child node (replace if it exists)
 - Need sorting by date, it probably does it by source then date
 - Description (at least for abstruse goose) contains the actual content I want...
+- Want to respond to Ctl-C.
