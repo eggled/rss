@@ -1,4 +1,3 @@
-- instead of dumping the encoded text through pugi, leave the content divs empty. Have showme() populate the div through ajax
-- This means the content should live in the database, probably. Maybe on the filesystem, though, with a pointer in the database. That guarantees I'll avoid any overflow errors
-- 
-- 
+- javascript for determining "already loaded" can go away... append a child node (replace if it exists)
+- Need sorting by date, it probably does it by source then date
+- Description (at least for abstruse goose) contains the actual content I want...

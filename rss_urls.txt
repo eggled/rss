@@ -1,1 +1,2 @@
 http://feeds.arstechnica.com/arstechnica/everything
+http://abstrusegoose.com/feed
