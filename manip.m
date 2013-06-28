@@ -21,3 +21,13 @@ setfields(g,title,link,pubDate,description,creator,publisher,publink)
  q
 reset
  k ^ART,^IND
+ q
+getmetadata(g,title,link,publink,publisher)
+ s debug="/tmp/mumpslog"
+ open debug:(append)
+ u debug
+ w "In getmetadata.",!
+ s g=$o(^ART(g))
+ w "Decided id is "_g,!
+ s title=^ART(g,"title"),link=^ART(g,"link"),publink=^ART(g,"publink"),publisher=^ART(g,"publisher")
+ q

@@ -33,7 +33,8 @@ int main()
                 Fetcher g(line);
                 XParser(g.fetch());
             }
-            sleep(60);
+            //sleep(60);
+            return 0;
         }
     }
 
@@ -68,8 +69,11 @@ int main()
                 {
                     cout << "HTTP/1.1 200 OK\r\n";
                     cout << "Content-type: text/html\r\n\r\n";
+                    cerr << "Got page request, calling update\n" << endl;
                     display.update();
+                    cerr << "Got page request, calling printpage\n" << endl;
                     display.printpage();
+                    cerr << "Got page request, done\n" << endl;
                 } else if (0 == request_string.compare(0,2,"/?")) // request
                 {
                     CGI nam;

@@ -119,29 +119,35 @@ string Database::getcontent(string id)
 
 bool Database::getmetadata(string &id, string &title, string &link, string &publink, string &publisher)
 {
-    gtm_char_t *cid = string_to_gtm_char_t(id);
-    gtm_char_t *ctitle = string_to_gtm_char_t(title);
-    gtm_char_t *clink = string_to_gtm_char_t(link);
-    gtm_char_t *cpublink = string_to_gtm_char_t(publink);
-    gtm_char_t *cpublisher = string_to_gtm_char_t(publisher);
+    gtm_char_t cid[1025];
+    gtm_string_t ctitle, clink, cpublink, cpublisher;
+    char ctitle_buf[1025], clink_buf[1025], cpublink_buf[1025], cpublisher_buf[1025];
+    ctitle.length = 1024;
+    ctitle.address = ctitle_buf;
+    clink.length = 1024;
+    clink.address = clink_buf;
+    cpublink.length = 1024;
+    cpublink.address = cpublink_buf;
+    cpublisher.length = 1024;
+    cpublisher.address = cpublisher_buf;
 
-    if (0 != gtm_ci("getmetadata", cid, ctitle, clink, cpublink, cpublisher))
+    strncpy(cid, id.c_str(), 1024);
+    cerr << "In getmetadata, calling function" << endl;
+
+    if (0 != gtm_ci("getmetadata", cid, &ctitle, &clink, &cpublink, &cpublisher))
     {
 		char buf[1024];
 		gtm_zstatus(buf, 1023);
 		cerr << "Failed to run callin getmetadata: " << buf << endl;
     }
+    cerr << "Call returned" << endl;
 
     id = cid;
-    title = ctitle;
-    link = clink;
-    publink = cpublink;
-    publisher = cpublisher;
-    free(cid);
-    free(ctitle);
-    free(clink);
-    free(cpublink);
-    free(cpublisher);
+    title = ctitle_buf;
+    link = clink_buf;
+    publink = cpublink_buf;
+    publisher = cpublisher_buf;
+    cerr << "," << "Ran callin getmetadata, got: " << "," << id << "," << title << "," << link << "," << publink << "," << publisher << "," << endl;
     if (0 == id.length())
         return 0;
     return 1;
