@@ -117,9 +117,17 @@ string Database::getcontent(string id)
     if (0 == retval.length())
     {
         this->get(id, "description", retval);
-    }else {
-cerr << "No need for description on " << id << endl;
-}
+    }
+    int srcpos;
+    string publink;
+    this->get(id, "publink", publink);
+    if (publink.substr(0,1) != string("/"))
+    {
+	    while ((srcpos = retval.find("src=\"/")) != string::npos)
+	    {
+		    retval.replace(srcpos,6, string("src=\"") + publink + "/");
+	    }
+    }
     return retval;
 }
 
@@ -136,7 +144,6 @@ void Database::get(string id, string which, string &value)
 		cerr << "Callin for " << which << " failed: " << buf << endl;
 	}
 	value = buffer;
-cerr << "Got a request for " << which << ", got " << value << endl;
 	free(cid);
 	free(cwhich);
 }
