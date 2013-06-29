@@ -20,6 +20,6 @@ class Database
         void setfields(std::string guid, std::string title, std::string link, unsigned long pubDate, std::string description, std::string creator, std::string publisher, std::string publink);
 	bool getmetadata(std::string &id, std::string &title, std::string &link, std::string &publink, std::string &publisher, std::string &creator);
 	void get(std::string id, std::string which, std::string &value);
+	bool getfeed(std::string &startfrom);
 };
-
 #endif

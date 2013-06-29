@@ -5,6 +5,7 @@ using namespace std;
 #include <string>
 #include <sstream>
 #include <iostream>
+#include <stdlib.h>
 
 /**
  * Helper functions to talk to cUrl.
@@ -52,7 +53,8 @@ string do_url_fetch(string url)
     {
         return output.str();
     }
-    throw curl_easy_strerror(code);
+    cerr << curl_easy_strerror(code) << endl;
+    exit (1);
 }
 
 /**

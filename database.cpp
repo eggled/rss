@@ -34,7 +34,10 @@ Database::Database()
     setenv("gtmroutines", (string(GTMDIST) + "/../db/r").c_str(), 1);
     setenv("gtmgbldir", (string(GTMDIST) + "/../db/cur/g/gtm.gld").c_str(), 1);
     if (0 != gtm_init())
-        throw "Failed to init GT.M";
+    {
+	cerr << "Failed to init GT.M" << endl;
+	exit(1);
+    }
     sigset_t mask;
     sigfillset(&mask);
     sigprocmask(SIG_SETMASK, &mask, NULL);
@@ -206,3 +209,18 @@ void Database::setfields(string guid, string title, string link, unsigned long p
     free(g_publink);
 }
 
+bool Database::getfeed(string &startfrom)
+{
+    gtm_char_t g_feed[1025];
+    strncpy(g_feed, startfrom.c_str(), 1024);
+    if (0 != gtm_ci("getfeed",g_feed))
+    {
+        char buf[1024];
+        gtm_zstatus(buf, 1023);
+	cerr << "Callin for getfeed failed: " << buf << endl;
+    }
+    startfrom = g_feed;
+    if (0 == startfrom.length())
+	return 0;
+    return 1;
+}

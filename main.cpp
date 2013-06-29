@@ -24,15 +24,14 @@ int main()
     } else if (pid == 0) {
         while (1)
         {
-            ifstream urls;
-            urls.open("rss_urls.txt");
-            string line;
-            while (getline(urls, line))
+	    Database d;
+            string feed;
+            while (d.getfeed(feed))
             {
-                Fetcher g(line);
+                Fetcher g(feed);
                 XParser(g.fetch());
             }
-	sleep(60);
+	    sleep(60);
         }
     }
 
