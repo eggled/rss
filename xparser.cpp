@@ -65,11 +65,10 @@ subItem::subItem(pugi::xml_node node, string publisher, string publink)
     output << this->content;
     output.close();
 
-    g.setfields(this->guid, this->title, this->link, this->pubDate, this->description, this->creator, this->publisher, this->publink);
-
     this->creator = node.child_value("dc:creator");
     this->publisher = publisher;
     this->publink = publink;
+    g.setfields(this->guid, this->title, this->link, this->pubDate, this->description, this->creator, this->publisher, this->publink);
 }
 pugi::xml_node subItem::generate()
 {

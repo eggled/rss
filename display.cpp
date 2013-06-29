@@ -38,9 +38,9 @@ Display::Display()
 void Display::update()
 {
     Database g;
-    string s_id = "", s_title, s_link, s_publink, s_publisher;
+    string s_id = "", s_title, s_link, s_publink, s_publisher, s_creator;
     int spec = 0;
-    while (g.getmetadata(s_id, s_title, s_link, s_publink, s_publisher))
+    while (g.getmetadata(s_id, s_title, s_link, s_publink, s_publisher, s_creator))
     {
         ostringstream idval, onclickfunc, creatorstring, outputdata;
         idval << "spec" << ++spec;
@@ -71,9 +71,11 @@ void Display::update()
         link = span.append_child("a");
         link.append_attribute("href").set_value(s_publink.c_str());
         link.text().set(s_publisher.c_str());
-        creatorstring << " by " << s_publink;
-        span.append_child("span").text().set(creatorstring.str().c_str());
-
+	if (s_creator.length())
+	{
+		creatorstring << " by " << s_creator;
+		span.append_child("span").text().set(creatorstring.str().c_str());
+	}
     }
 }
 

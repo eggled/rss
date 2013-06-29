@@ -50,6 +50,7 @@ void Database::markread(string id)
 	{
 		char buf[1024];
 		gtm_zstatus(buf, 1023);
+		cerr << "Callin for markread failed: " << buf << endl;
 	}
 }
 
@@ -63,6 +64,7 @@ int Database::is_read(string id)
 	{
 		char buf[1024];
 		gtm_zstatus(buf, 1023);
+		cerr << "Callin for isread failed: " << buf << endl;
 	}
 	return (int) ret;
 }
@@ -75,6 +77,7 @@ string Database::getfname(string id)
     {
 		char buf[1024];
 		gtm_zstatus(buf, 1023);
+		cerr << "Callin for getfname failed: " << buf << endl;
     }
     free(idarg);
     string retval = filename;
@@ -93,6 +96,7 @@ string Database::newfname(string id)
     {
 		char buf[1024];
 		gtm_zstatus(buf, 1023);
+		cerr << "Callin for newfname failed: " << buf << endl;
     }
     free(idarg);
     string retval = filename;
@@ -110,26 +114,52 @@ string Database::getcontent(string id)
     while (fs.read(buffer, sizeof(buffer)))
         retval.append(buffer, sizeof(buffer));
     retval.append(buffer, fs.gcount());
+    if (0 == retval.length())
+    {
+        this->get(id, "description", retval);
+    }else {
+cerr << "No need for description on " << id << endl;
+}
     return retval;
 }
 
-bool Database::getmetadata(string &id, string &title, string &link, string &publink, string &publisher)
+void Database::get(string id, string which, string &value)
+{
+	gtm_char_t * cid = string_to_gtm_char_t(id);
+	gtm_char_t * cwhich = string_to_gtm_char_t(which);
+	gtm_char_t buffer[1025];
+	buffer[1024] = '\0';
+	if (0 != gtm_ci("get", cid, cwhich, buffer))
+	{
+		char buf[1024];
+		gtm_zstatus(buf, 1023);
+		cerr << "Callin for " << which << " failed: " << buf << endl;
+	}
+	value = buffer;
+cerr << "Got a request for " << which << ", got " << value << endl;
+	free(cid);
+	free(cwhich);
+}
+
+bool Database::getmetadata(string &id, string &title, string &link, string &publink, string &publisher, string &creator)
 {
 // 1025 because it's larger than key size (255)
     gtm_char_t cid[1025];
 // 4097 because it's larger than the record size.
-    gtm_char_t ctitle[4097], clink[4097], cpublink[4097], cpublisher[4097];
+    gtm_char_t ctitle[4097], clink[4097], cpublink[4097], cpublisher[4097], ccreator[4097];
 ctitle[4096] = '\0';
 clink[4096] = '\0';
 cpublink[4096] = '\0';
 cpublisher[4096] = '\0';
+ccreator[4096] = '\0';
 
     strncpy(cid, id.c_str(), 1024);
 
-    if (0 != gtm_ci("getmetadata", cid, &ctitle, &clink, &cpublink, &cpublisher))
+    if (0 != gtm_ci("getmetadata", cid, ctitle, clink, cpublink, cpublisher,ccreator))
     {
 		char buf[1024];
 		gtm_zstatus(buf, 1023);
+		cerr << "Callin for getmetadata failed: " << buf << endl;
     }
 
     id = cid;
@@ -137,6 +167,7 @@ cpublisher[4096] = '\0';
     link = clink;
     publink = cpublink;
     publisher = cpublisher;
+    creator = ccreator;
     if (0 == id.length())
         return 0;
     return 1;
@@ -157,6 +188,7 @@ void Database::setfields(string guid, string title, string link, unsigned long p
     {
         char buf[1024];
         gtm_zstatus(buf, 1023);
+	cerr << "Callin for setfields failed: " << buf << endl;
     }
     free(g_guid);
     free(g_title);

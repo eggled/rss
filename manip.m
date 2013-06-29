@@ -22,8 +22,17 @@ setfields(g,title,link,pubDate,description,creator,publisher,publink)
 reset
  k ^ART,^IND
  q
-getmetadata(g,title,link,publink,publisher)
+getmetadata(g,title,link,publink,publisher,creator)
  f  s g=$o(^ART(g)) q:g=""  q:'$d(^ART(g,"read"))
  q:g=""
- s title=^ART(g,"title"),link=^ART(g,"link"),publink=^ART(g,"publink"),publisher=^ART(g,"publisher")
+ s title=^ART(g,"title"),link=^ART(g,"link"),publink=^ART(g,"publink"),publisher=^ART(g,"publisher"),creator=^ART(g,"creator")
+ q
+get(g,which,value)
+ s value=""
+ o "/tmp/mumps":(append)
+ u "/tmp/mumps"
+ w "In get function",!
+ q:'$d(^ART(g,which))
+ w "even have data to return: ",value,!
+ s value=^ART(g,which)
  q
