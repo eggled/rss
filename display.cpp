@@ -40,10 +40,8 @@ void Display::update()
     Database g;
     string s_id = "", s_title, s_link, s_publink, s_publisher;
     int spec = 0;
-    cerr << "In update, calling getmetadata with " << s_id << endl;
     while (g.getmetadata(s_id, s_title, s_link, s_publink, s_publisher))
     {
-        cerr << "Update got called, have metadata" << endl;
         ostringstream idval, onclickfunc, creatorstring, outputdata;
         idval << "spec" << ++spec;
         onclickfunc << "showme('" << idval.str() << "')";

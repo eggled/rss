@@ -3,3 +3,5 @@
 - Description (at least for abstruse goose) contains the actual content I want...
 - Want to respond to Ctl-C.
 - manip.m is way too sensitive to undefined globals
+- onpageload should scroll to the top, probably.
+- add a refresh link that forces a re-download of the feeds

@@ -50,7 +50,6 @@ void Database::markread(string id)
 	{
 		char buf[1024];
 		gtm_zstatus(buf, 1023);
-		cerr << "Failed to run callin markread: " << buf << endl;
 	}
 }
 
@@ -64,7 +63,6 @@ int Database::is_read(string id)
 	{
 		char buf[1024];
 		gtm_zstatus(buf, 1023);
-		cerr << "Failed to run callin isread: " << buf << endl;
 	}
 	return (int) ret;
 }
@@ -77,7 +75,6 @@ string Database::getfname(string id)
     {
 		char buf[1024];
 		gtm_zstatus(buf, 1023);
-		cerr << "Failed to run callin getfname: " << buf << endl;
     }
     free(idarg);
     string retval = filename;
@@ -96,7 +93,6 @@ string Database::newfname(string id)
     {
 		char buf[1024];
 		gtm_zstatus(buf, 1023);
-		cerr << "Failed to run callin newfname: " << buf << endl;
     }
     free(idarg);
     string retval = filename;
@@ -119,35 +115,28 @@ string Database::getcontent(string id)
 
 bool Database::getmetadata(string &id, string &title, string &link, string &publink, string &publisher)
 {
+// 1025 because it's larger than key size (255)
     gtm_char_t cid[1025];
-    gtm_string_t ctitle, clink, cpublink, cpublisher;
-    char ctitle_buf[1025], clink_buf[1025], cpublink_buf[1025], cpublisher_buf[1025];
-    ctitle.length = 1024;
-    ctitle.address = ctitle_buf;
-    clink.length = 1024;
-    clink.address = clink_buf;
-    cpublink.length = 1024;
-    cpublink.address = cpublink_buf;
-    cpublisher.length = 1024;
-    cpublisher.address = cpublisher_buf;
+// 4097 because it's larger than the record size.
+    gtm_char_t ctitle[4097], clink[4097], cpublink[4097], cpublisher[4097];
+ctitle[4096] = '\0';
+clink[4096] = '\0';
+cpublink[4096] = '\0';
+cpublisher[4096] = '\0';
 
     strncpy(cid, id.c_str(), 1024);
-    cerr << "In getmetadata, calling function" << endl;
 
     if (0 != gtm_ci("getmetadata", cid, &ctitle, &clink, &cpublink, &cpublisher))
     {
 		char buf[1024];
 		gtm_zstatus(buf, 1023);
-		cerr << "Failed to run callin getmetadata: " << buf << endl;
     }
-    cerr << "Call returned" << endl;
 
     id = cid;
-    title = ctitle_buf;
-    link = clink_buf;
-    publink = cpublink_buf;
-    publisher = cpublisher_buf;
-    cerr << "," << "Ran callin getmetadata, got: " << "," << id << "," << title << "," << link << "," << publink << "," << publisher << "," << endl;
+    title = ctitle;
+    link = clink;
+    publink = cpublink;
+    publisher = cpublisher;
     if (0 == id.length())
         return 0;
     return 1;
@@ -168,7 +157,6 @@ void Database::setfields(string guid, string title, string link, unsigned long p
     {
         char buf[1024];
         gtm_zstatus(buf, 1023);
-        cerr << "Failed to run callin setfields: " << buf << endl;
     }
     free(g_guid);
     free(g_title);
