@@ -71,12 +71,21 @@ void Display::update()
         link = span.append_child("a");
         link.append_attribute("href").set_value(s_publink.c_str());
         link.text().set(s_publisher.c_str());
-	if (s_creator.length())
-	{
-		creatorstring << " by " << s_creator;
-		span.append_child("span").text().set(creatorstring.str().c_str());
-	}
+        if (s_creator.length())
+        {
+            creatorstring << " by " << s_creator;
+            span.append_child("span").text().set(creatorstring.str().c_str());
+        }
     }
+    string feed_url = "";
+    while (g.getfeed(feed_url))
+    {
+        this->navbarnode.append_child("p").text().set(feed_url.c_str());
+    }
+    pugi::xml_node input = this->navbarnode.append_child("input");
+    input.append_attribute("id").set_value("addurl");
+    input.append_attribute("type").set_value("text");
+    input.text().set(" ");
 }
 
 void Display::printpage()

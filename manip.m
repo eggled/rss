@@ -68,3 +68,6 @@ getanyfeed(feed)
  s feed=$o(^FEEDS("all",feed))
  q:feed="" 0
  q ^FEEDS("all",feed)
+setfeedinfo(feedurl,title)
+ s ^FEEDS(feedurl,"title")=title
+ q

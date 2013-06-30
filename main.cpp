@@ -31,7 +31,7 @@ int main()
                 Fetcher g(feed);
                 XParser(g.fetch());
             }
-	    sleep(60);
+	    sleep(10);
         }
     }
 

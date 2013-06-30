@@ -6,3 +6,4 @@ setfields :void setfields^manip(I:gtm_char_t*,I:gtm_char_t*,I:gtm_char_t*,I:gtm_
 getmetadata :void getmetadata^manip(IO:gtm_char_t*, IO:gtm_char_t*, IO:gtm_char_t*, IO:gtm_char_t*, IO:gtm_char_t*,IO:gtm_char_t*)
 get :void get^manip(I:gtm_char_t*, I:gtm_char_t*, IO:gtm_char_t*)
 getfeed :void getfeed^manip(IO:gtm_char_t*)
+setfeedinfo :void setfeedinfo^manip(I:gtm_char_t*,I:gtm_char_t*)

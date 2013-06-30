@@ -126,10 +126,21 @@ string Database::getcontent(string id)
     this->get(id, "publink", publink);
     if (publink.substr(0,1) != string("/"))
     {
-	    while ((srcpos = retval.find("src=\"/")) != string::npos)
-	    {
-		    retval.replace(srcpos,6, string("src=\"") + publink + "/");
-	    }
+        while ((srcpos = retval.find("src=\"//")) != string::npos)
+        {
+            retval.replace(srcpos,7, string("src=\"http://"));
+        }
+        while ((srcpos = retval.find("src=\"/")) != string::npos)
+        {
+            retval.replace(srcpos,6, string("src=\"") + publink + "/");
+        }
+    }
+    if (publink.substr(0,26) != string("http://cdn.arstechnica.net"))
+    {
+        while ((srcpos = retval.find("http://cdn.arstechnica.net")) != string::npos)
+        {
+            retval.replace(srcpos, 26, string("http://arstechnica.com"));
+        }
     }
     return retval;
 }

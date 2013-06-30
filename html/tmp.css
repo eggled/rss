@@ -36,7 +36,7 @@
      margin-bottom: 10px;
  }
  .navbar {
-     position: absolute;
+     /* position: absolute;*/
      border-right: solid 1px #CCCCCC;
      height: 100%;
      overflow: auto;
@@ -48,7 +48,7 @@
      height: 100%
 }
 .wrapcontent {
-    padding-left: 204px;
+    /*padding-left: 204px;*/
     position: relative;
     width: auto;
     height: 100%;
