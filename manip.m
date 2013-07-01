@@ -26,36 +26,49 @@ isread(g)
 ; g (input): guid of feed item
 ; file (output): receives an integer value, unique since database creation
 ; stores this file number under the guid as the file name
-newfname(g,file)
+newfname(g,file,desc)
  s:0=$d(^FILES) ^FILES=0
  s file=$i(^FILES)
  l +^FILES(file):0
  f  q:($TEST=1)&(0=$d(^FILES(file)))  s file=$i(^FILES) l +^FILES(file):0
- s ^ART(g,"file")=file
+ s:desc'=1 ^ART(g,"file")=file
+ s:desc=1 ^ART(g,"descfile")=file
  q
 ; getfname
 ; g (input): guid of the feed item
 ; file (output): will be an empty string if no file is defined, otherwise returns the defined content file.
-getfname(g,file)
+getfname(g,file,desc)
  s file=""
- q:0=$d(^ART(g,"file"))
- s file=^ART(g,"file")
+ q:desc=1&0=$d(^ART(g,"descfile"))
+ q:desc'=1&0=$d(^ART(g,"file"))
+ s:desc'=1 file=^ART(g,"file")
+ s:desc=1 file=^ART(g,"descfile")
  q
 ; setfields
 ; Takes all the info for a feed and stores it in the database. All params are input-only.
-setfields(g,title,link,pubDate,description,creator,publisher,publink)
+setfields(g,title,link,pubDate,creator,publisher,publink)
+ s out="/tmp/mumps" o out:(append) u out
  s markunread=$s(0=$d(^ART(g)):1,1:0)
+ w "markunread: ",markunread,!
  s updatepubDate=$s(1=$d(^ART(g,"pubDate")):$s(pubDate'=^ART(g,"pubDate"):1,1:0),1:1)
- s ^ART(g,"title")=title,^ART(g,"link")=link,^ART(g,"pubDate")=pubDate,^ART(g,"description")=description,^ART(g,"creator")=creator,^ART(g,"publisher")=publisher,^ART(g,"publink")=publink
+ w "updatepubDate: ",updatepubDate,!
+ s ^ART(g,"title")=title,^ART(g,"link")=link,^ART(g,"pubDate")=pubDate,^ART(g,"creator")=creator,^ART(g,"publisher")=publisher,^ART(g,"publink")=publink
+ w "Finished setting fields",!
  l +^IND("unread",pubDate) 
  s:markunread=1 ^IND("unread",pubDate,g)=1 
  l -^IND("unread",pubDate)
+ w:markunread=1 "Set unread index",!
+ w:markunread'=1 "Skipped setting unread index",!
  s:updatepubDate'=0 ^IND("all",pubDate,g)=1
  q
+; resethard
+; Clears a
+resethard
+ k ^FEEDS
 ; reset
-; Clears all feed info (start over)
+; Clears all downloaded feed info (start over with articles)
 reset
- k ^ART,^IND
+ k ^ART,^IND,^FILES
  q
 ; getmetadata
 ; g (input/output), all other parameters are output-only.
