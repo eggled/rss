@@ -1,9 +1,15 @@
 q
+; 
+; s out="/tmp/mumps" o out:(append) u out
 ; markread
 ; g (input): guid of feed item to mark read
 markread(g)
+ s pubDate=^ART(g,"pubDate")
+ k ^IND("unread",pubDate,g)
+ l +^IND("unread",pubDate)
+ k:0=$d(^IND("unread",pubDate)) ^IND("unread",pubDate)
+ l -^IND("unread",pubDate)
  s ^ART(g,"read")=$h
- s ^IND("read",$h)=g
  q
 ; isread
 ; g (input): guid of feed item
@@ -32,7 +38,13 @@ getfname(g,file)
 ; setfields
 ; Takes all the info for a feed and stores it in the database. All params are input-only.
 setfields(g,title,link,pubDate,description,creator,publisher,publink)
+ s markunread=$s(0=$d(^ART(g)):1,1:0)
+ s updatepubDate=$s(1=$d(^ART(g,"pubDate")):$s(pubDate'=^ART(g,"pubDate"):1,1:0),1:1)
  s ^ART(g,"title")=title,^ART(g,"link")=link,^ART(g,"pubDate")=pubDate,^ART(g,"description")=description,^ART(g,"creator")=creator,^ART(g,"publisher")=publisher,^ART(g,"publink")=publink
+ l +^IND("unread",pubDate) 
+ s:markunread=1 ^IND("unread",pubDate,g)=1 
+ l -^IND("unread",pubDate)
+ s:updatepubDate'=0 ^IND("all",pubDate,g)=1
  q
 ; reset
 ; Clears all feed info (start over)
@@ -44,8 +56,12 @@ reset
 ; gets the entry after g (so, pass "" to get the first one). Stores the info in the output parameters.
 ; If there is no entry after g, g will be set to "", and the other field values are undefined.
 getmetadata(g,title,link,publink,publisher,creator)
- f  s g=$o(^ART(g)) q:g=""  q:'$d(^ART(g,"read"))
- q:g=""
+ s pubDate=$s(g="":$o(^IND("unread","")),1:^ART(g,"pubDate"))
+ q:pubDate=""
+ s g=$o(^IND("unread",pubDate,g))
+ s:g="" pubDate=$o(^IND("unread",pubDate))
+ q:pubDate=""
+ s:g="" g=$o(^IND("unread",pubDate,g))
  s title=^ART(g,"title"),link=^ART(g,"link"),publink=^ART(g,"publink"),publisher=^ART(g,"publisher"),creator=^ART(g,"creator")
  q
 ; get

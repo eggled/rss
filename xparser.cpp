@@ -6,6 +6,7 @@
 #include <iostream>
 #include <istream>
 #include <fstream>
+#include <time.h>
 
 using namespace std;
 
@@ -51,7 +52,7 @@ subItem::subItem(pugi::xml_node node, string publisher, string publink)
 
     this->title = node.child_value("title");
     this->link = node.child_value("link");
-    this->pubDate = tm->tm_gmtoff;
+    this->pubDate = mktime(tm);
     this->guid = node.child_value("guid");
     this->description = node.child_value("description");
     this->content = node.child_value("content:encoded");
