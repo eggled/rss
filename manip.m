@@ -1,6 +1,12 @@
 q
 ; 
 ; s out="/tmp/mumps" o out:(append) u out
+; addurl
+; url (input) - new feed URL to be added to the page
+addurl(url)
+ s ^FEEDS("active",url)=1
+ s ^FEEDS("all",url)=1
+ q
 ; markread
 ; g (input): guid of feed item to mark read
 markread(g)

@@ -108,6 +108,18 @@ string Database::newfname(string id)
     return retval;
 }
 
+void Database::addurl(string which)
+{
+    gtm_char_t *url = string_to_gtm_char_t(which);
+    if (0 != gtm_ci("addurl", url))
+    {
+	    char buf[1024];
+	    gtm_zstatus(buf, 1023);
+	    cerr << "Callin for addurl failed: " << buf << endl;
+    }
+}
+    
+
 string Database::getcontent(string id)
 {
     string file = this->getfname(id);

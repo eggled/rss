@@ -80,10 +80,20 @@ Database g;
                     cout << "Content-type: text/html\r\n\r\n";
 cout << g.getcontent(nam.get_value("content"));
 g.markread(nam.get_value("content"));
-                    }
+		    } else if (nam.get_value("addurl").length())
+		    {
+			Database g;
+			g.addurl(nam.get_value("addurl"));
+			cout << "HTTP/1.1 200 OK\r\n";
+			cout << "Content-type: text/html\r\n\r\n";
+			display.update();
+			display.printnavbar();
+                    } else
+	            {
+                           cerr << "Unrecognized data in request_string: " << request_string << endl;
+		    }
                 } else
                 {
-                    //FIXME - this obviously allows for arbitrary files to be dumped
                     if (0 == request_string.compare("/tmp.js") || 0 == request_string.compare("/tmp.css"))
                     {
                         request_string = "html" + request_string;
@@ -91,7 +101,10 @@ g.markread(nam.get_value("content"));
                         if (file_dump.is_open())
                         {
                             cout << "HTTP/1.1 200 OK\r\n";
-                            cout << "Content-type: text/plain\r\n\r\n";
+			    if (request_string.compare("/tmp.css"))
+				cout << "Content-type: text/css\r\n\r\n";
+			    else
+			        cout << "Content-type: text/plain\r\n\r\n";
                             while (getline(file_dump, line))
                             {
                                 cout << line << endl;

@@ -21,5 +21,6 @@ class Database
 	bool getmetadata(std::string &id, std::string &title, std::string &link, std::string &publink, std::string &publisher, std::string &creator);
 	void get(std::string id, std::string which, std::string &value);
 	bool getfeed(std::string &startfrom);
+        void addurl(std::string url);
 };
 #endif

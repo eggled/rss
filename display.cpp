@@ -88,6 +88,11 @@ void Display::update()
     input.text().set(" ");
 }
 
+void Display::printnavbar()
+{
+    this->navbarnode.print(cout, "\t", (pugi::format_default | pugi::format_no_declaration) & (~pugi::format_no_escapes));
+}
+
 void Display::printpage()
 {
     this->document.save(cout, "\t", (pugi::format_default | pugi::format_no_declaration) & (~pugi::format_no_escapes));

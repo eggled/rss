@@ -18,6 +18,7 @@ class Display
     void add(XParser feed);
     void printpage();
     void update();
+    void printnavbar();
     Display();
 };
 

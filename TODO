@@ -1,7 +1,7 @@
 - javascript for determining "already loaded" can go away... append a child node (replace if it exists)
-- Need sorting by date, it does it by guid now
 - Want to respond to Ctl-C.
 - manip.m is way too sensitive to undefined globals
 - onpageload should scroll to the top, probably.
 - add a refresh link that forces a re-download of the feeds
-- it's iterating all articles, should only be iterating an "unread" index (perf)
+- description can get big... that should go in a file, like content.
+- javascript refresh after adding a url needs work.

@@ -83,3 +83,22 @@ document.onkeypress = function(e)
         mk();
     }
 };
+
+
+function handlekeypress(e)
+{
+    if (e.target.id == "addurl")
+    {
+	if (e.keyCode == 13) // Enter
+		load('/?addurl=' + e.target.value, function(txt) {
+			e.target.parentNode.innerHTML = txt;
+			alert(txt);
+			document.getElementById("addurl").addEventListener("keypress", handlekeypress);
+		});
+    }
+    return 0;
+}
+
+window.onload = function() {
+	document.getElementById("addurl").addEventListener("keypress", handlekeypress);
+}
