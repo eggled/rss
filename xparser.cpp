@@ -56,6 +56,10 @@ subItem::subItem(pugi::xml_node node, string publisher, string publink)
     this->guid = node.child_value("guid");
     this->description = node.child_value("description");
     this->content = node.child_value("content:encoded");
+
+    if (this->guid.length() == 0)
+        this->guid = this->link;
+
     Database g;
 
     this->creator = node.child_value("dc:creator");

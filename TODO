@@ -5,5 +5,6 @@
 - add a refresh link that forces a re-download of the feeds
 - description can get big... that should go in a file, like content.
 - javascript refresh after adding a url needs work (needs to refresh the main page, it's also adding scrollbars every time I pop a new navbar on there... whoops.)
-- apparently, some feeds are not sending a guid
-- also, would be nice to support an import of an opml file
+- would be nice to support an import of an opml file
+- want a date appended to the entries
+- Some entries w/o block elements in their content / description need a <br /> following the author tagline

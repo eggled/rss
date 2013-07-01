@@ -1,7 +1,7 @@
 
 gtm_dist="/home/eggled/rss/gtm/gtmV60002"
 INCLUDE=-I${gtm_dist}
-CFLAGS=-Wall -ggdb ${INCLUDE}
+CFLAGS=-Wall -g -rdynamic ${INCLUDE}
 LDFLAGS=-lcurl -L${gtm_dist} -lgtmshr
 
 default: all
