@@ -72,11 +72,12 @@ int Database::is_read(string id)
 	return (int) ret;
 }
 
-string Database::getfname(string id)
+string Database::getfname(string id, int is_desc)
 {
 	gtm_char_t *idarg = string_to_gtm_char_t(id);
 	gtm_char_t *filename = (gtm_char_t*) malloc((1+PATH_MAX) * sizeof(gtm_char_t));
-    if (0 != gtm_ci("getfname", idarg, filename))
+    gtm_int_t desc = is_desc;
+    if (0 != gtm_ci("getfname", idarg, filename, desc))
     {
 		char buf[1024];
 		gtm_zstatus(buf, 1023);
@@ -90,12 +91,13 @@ string Database::getfname(string id)
     return retval;
 }
 
-string Database::newfname(string id)
+string Database::newfname(string id, int is_desc)
 {
 	gtm_char_t *idarg, *filename;
+    gtm_int_t desc = is_desc;
 	filename = (gtm_char_t*) malloc((1+PATH_MAX) * sizeof(gtm_char_t));
 	idarg = string_to_gtm_char_t(id);
-    if (0 != gtm_ci("newfname", idarg, filename))
+    if (0 != gtm_ci("newfname", idarg, filename, desc))
     {
 		char buf[1024];
 		gtm_zstatus(buf, 1023);
@@ -118,7 +120,6 @@ void Database::addurl(string which)
 	    cerr << "Callin for addurl failed: " << buf << endl;
     }
 }
-    
 
 string Database::getcontent(string id)
 {
@@ -127,13 +128,23 @@ string Database::getcontent(string id)
     char buffer [4096];
     ifstream fs(file.c_str());
     while (fs.read(buffer, sizeof(buffer)))
+    {
         retval.append(buffer, sizeof(buffer));
+    }
     retval.append(buffer, fs.gcount());
+    fs.close();
     if (0 == retval.length())
     {
-        this->get(id, "description", retval);
+        file = this->getfname(id, 1);
+        fs.open(file.c_str(), ifstream::in);
+        while (fs.read(buffer, sizeof(buffer)))
+        {
+            retval.append(buffer, sizeof(buffer));
+        }
+        retval.append(buffer, fs.gcount());
+        fs.close();
     }
-    int srcpos;
+    size_t srcpos;
     string publink;
     this->get(id, "publink", publink);
     if (publink.substr(0,1) != string("/"))
@@ -206,18 +217,17 @@ ccreator[4096] = '\0';
     return 1;
 }
 
-void Database::setfields(string guid, string title, string link, unsigned long pubDate, string description, string creator, string publisher, string publink)
+void Database::setfields(string guid, string title, string link, unsigned long pubDate, string creator, string publisher, string publink)
 {
     gtm_char_t *g_guid = string_to_gtm_char_t(guid);
     gtm_char_t *g_title = string_to_gtm_char_t(title);
     gtm_char_t *g_link = string_to_gtm_char_t(link);
     gtm_ulong_t g_pubDate = pubDate;
-    gtm_char_t *g_description = string_to_gtm_char_t(description);
     gtm_char_t *g_creator = string_to_gtm_char_t(creator);
     gtm_char_t *g_publisher = string_to_gtm_char_t(publisher);
     gtm_char_t *g_publink = string_to_gtm_char_t(publink);
 
-    if (0 != gtm_ci("setfields",g_guid,g_title,g_link,g_pubDate,g_description,g_creator,g_publisher,g_publink))
+    if (0 != gtm_ci("setfields",g_guid,g_title,g_link,g_pubDate,g_creator,g_publisher,g_publink))
     {
         char buf[1024];
         gtm_zstatus(buf, 1023);
@@ -226,7 +236,6 @@ void Database::setfields(string guid, string title, string link, unsigned long p
     free(g_guid);
     free(g_title);
     free(g_link);
-    free(g_description);
     free(g_creator);
     free(g_publisher);
     free(g_publink);

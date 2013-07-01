@@ -92,7 +92,6 @@ function handlekeypress(e)
 	if (e.keyCode == 13) // Enter
 		load('/?addurl=' + e.target.value, function(txt) {
 			e.target.parentNode.innerHTML = txt;
-			alert(txt);
 			document.getElementById("addurl").addEventListener("keypress", handlekeypress);
 		});
     }

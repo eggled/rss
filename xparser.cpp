@@ -57,6 +57,12 @@ subItem::subItem(pugi::xml_node node, string publisher, string publink)
     this->description = node.child_value("description");
     this->content = node.child_value("content:encoded");
     Database g;
+
+    this->creator = node.child_value("dc:creator");
+    this->publisher = publisher;
+    this->publink = publink;
+    g.setfields(this->guid, this->title, this->link, this->pubDate, this->creator, this->publisher, this->publink);
+
     string fname = g.getfname(this->guid);
     if (0 == fname.length())
     {
@@ -66,10 +72,14 @@ subItem::subItem(pugi::xml_node node, string publisher, string publink)
     output << this->content;
     output.close();
 
-    this->creator = node.child_value("dc:creator");
-    this->publisher = publisher;
-    this->publink = publink;
-    g.setfields(this->guid, this->title, this->link, this->pubDate, this->description, this->creator, this->publisher, this->publink);
+    fname = g.getfname(this->guid,1);
+    if (0 == fname.length())
+    {
+        fname = g.newfname(this->guid,1);
+    }
+    output.open(fname.c_str(), ofstream::out);
+    output << this->description;
+    output.close();
 }
 pugi::xml_node subItem::generate()
 {

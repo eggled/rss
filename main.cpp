@@ -10,8 +10,15 @@
 #include <sys/wait.h>
 #include <errno.h>
 #include <string.h>
+#include <signal.h>
+#include <gtmxc_types.h>
 
 using namespace std;
+
+void sigalrm(int p)
+{
+    return;
+}
 
 int main()
 {
@@ -24,14 +31,19 @@ int main()
     } else if (pid == 0) {
         while (1)
         {
-	    Database d;
+            Database d;
             string feed;
             while (d.getfeed(feed))
             {
                 Fetcher g(feed);
                 XParser(g.fetch());
             }
-	    sleep(10);
+            sigset_t sigs;
+            sigemptyset(&sigs);
+            sigaddset(&sigs, SIGUSR1);
+            sigprocmask(SIG_UNBLOCK, &sigs, NULL);
+            signal(SIGUSR1, sigalrm);
+            sleep(30);
         }
     }
 
@@ -75,23 +87,30 @@ int main()
                     nam.process_request(request_string.substr(2));
                     if (nam.get_value("content").length())
                     {
-Database g;
-                    cout << "HTTP/1.1 200 OK\r\n";
-                    cout << "Content-type: text/html\r\n\r\n";
-cout << g.getcontent(nam.get_value("content"));
-g.markread(nam.get_value("content"));
-		    } else if (nam.get_value("addurl").length())
-		    {
-			Database g;
-			g.addurl(nam.get_value("addurl"));
-			cout << "HTTP/1.1 200 OK\r\n";
-			cout << "Content-type: text/html\r\n\r\n";
-			display.update();
-			display.printnavbar();
+                        Database g;
+                        cout << "HTTP/1.1 200 OK\r\n";
+                        cout << "Content-type: text/html\r\n\r\n";
+                        cout << g.getcontent(nam.get_value("content"));
+                        g.markread(nam.get_value("content"));
+                    } else if (nam.get_value("addurl").length())
+                    {
+                        Database g;
+                        g.addurl(nam.get_value("addurl"));
+                        kill(pid, SIGUSR1); // update feed list
+                        cout << "HTTP/1.1 200 OK\r\n";
+                        cout << "Content-type: text/html\r\n\r\n";
+                        display.update();
+                        display.printnavbar();
+                    } else if (nam.get_value("refresh").length())
+                    {
+                        kill(pid, SIGUSR1);
+                        cout << "HTTP/1.1 200 OK\r\n";
+                        cout << "Content-type: text/plain\r\n\r\n";
+                        cout << ".\r\n";
                     } else
-	            {
-                           cerr << "Unrecognized data in request_string: " << request_string << endl;
-		    }
+                    {
+                        cerr << "Unrecognized data in request_string: " << request_string << endl;
+                    }
                 } else
                 {
                     if (0 == request_string.compare("/tmp.js") || 0 == request_string.compare("/tmp.css"))
@@ -101,10 +120,10 @@ g.markread(nam.get_value("content"));
                         if (file_dump.is_open())
                         {
                             cout << "HTTP/1.1 200 OK\r\n";
-			    if (request_string.compare("/tmp.css"))
-				cout << "Content-type: text/css\r\n\r\n";
-			    else
-			        cout << "Content-type: text/plain\r\n\r\n";
+                            if (request_string.compare("/tmp.css"))
+                                cout << "Content-type: text/css\r\n\r\n";
+                            else
+                                cout << "Content-type: text/javascript\r\n\r\n";
                             while (getline(file_dump, line))
                             {
                                 cout << line << endl;

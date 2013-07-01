@@ -77,6 +77,11 @@ void Display::update()
             span.append_child("span").text().set(creatorstring.str().c_str());
         }
     }
+    pugi::xml_node link = this->navbarnode.append_child("a");
+    link.append_attribute("style").set_value("cursor: pointer; color: blue;");
+    link.append_attribute("onclick").set_value("var tmp = function() { load('/?refresh=now', window.location.refresh); return 0; }; tmp();");
+    link.text().set("refresh");
+    this->navbarnode.append_child("br");
     string feed_url = "";
     while (g.getfeed(feed_url))
     {
