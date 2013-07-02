@@ -8,3 +8,4 @@
 - would be nice to support an import of an opml file
 - want a date appended to the entries
 - Some entries w/o block elements in their content / description need a <br /> following the author tagline
+- I'd like confirmation when there's nothing to display (some basic page text to that effect)
