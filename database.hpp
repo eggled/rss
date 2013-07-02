@@ -18,7 +18,7 @@ class Database
         std::string getfname(std::string id, int is_desc = 0);
         std::string getcontent(std::string id);
         void setfields(std::string guid, std::string title, std::string link, unsigned long pubDate, std::string creator, std::string publisher, std::string publink);
-	bool getmetadata(std::string &id, std::string &title, std::string &link, std::string &publink, std::string &publisher, std::string &creator);
+	bool getmetadata(std::string &id, std::string &title, std::string &link, std::string &publink, std::string &publisher, std::string &creator, unsigned long &pubDate);
 	void get(std::string id, std::string which, std::string &value);
 	bool getfeed(std::string &startfrom);
         void addurl(std::string url);

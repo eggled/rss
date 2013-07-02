@@ -74,7 +74,7 @@ reset
 ; g (input/output), all other parameters are output-only.
 ; gets the entry after g (so, pass "" to get the first one). Stores the info in the output parameters.
 ; If there is no entry after g, g will be set to "", and the other field values are undefined.
-getmetadata(g,title,link,publink,publisher,creator)
+getmetadata(g,title,link,publink,publisher,creator,pubDate)
  s pubDate=$s(g="":$o(^IND("unread","")),1:^ART(g,"pubDate"))
  q:pubDate=""
  s g=$o(^IND("unread",pubDate,g))

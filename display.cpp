@@ -41,7 +41,8 @@ void Display::update()
     string s_id = "", s_title, s_link, s_publink, s_publisher, s_creator;
     int spec = 0;
     int count = 0;
-    while (g.getmetadata(s_id, s_title, s_link, s_publink, s_publisher, s_creator))
+    unsigned long i_pubDate;
+    while (g.getmetadata(s_id, s_title, s_link, s_publink, s_publisher, s_creator, i_pubDate))
     {
 	count++;
         ostringstream idval, onclickfunc, creatorstring, outputdata;
@@ -78,6 +79,33 @@ void Display::update()
             creatorstring << " by " << s_creator;
             span.append_child("span").text().set(creatorstring.str().c_str());
         }
+        if (i_pubDate > 0)
+	{
+		ostringstream dateInfo;
+		string suffix;
+		int offset = (time(NULL) - i_pubDate);
+		if (offset < 0)
+			offset = 0;
+		offset /= 60;
+		suffix = " minutes ago";
+		if (offset > 60)
+		{
+			offset /= 60;
+			suffix = " hours ago";
+		}
+		if (offset > 24)
+		{
+			offset /= 24;
+			suffix = " days ago";
+		}
+		if (offset > 7)
+		{
+			offset /= 7;
+			suffix = " weeks ago";
+		}
+		dateInfo << offset << suffix;
+		span.append_child("span").text().set(dateInfo.str().c_str());
+	}
 	span.append_child("br");
     }
     if (0 == count)

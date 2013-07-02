@@ -185,7 +185,7 @@ void Database::get(string id, string which, string &value)
 	free(cwhich);
 }
 
-bool Database::getmetadata(string &id, string &title, string &link, string &publink, string &publisher, string &creator)
+bool Database::getmetadata(string &id, string &title, string &link, string &publink, string &publisher, string &creator, unsigned long &pubDate)
 {
 // 1025 because it's larger than key size (255)
     gtm_char_t cid[1025];
@@ -198,8 +198,9 @@ cpublisher[4096] = '\0';
 ccreator[4096] = '\0';
 
     strncpy(cid, id.c_str(), 1024);
+    gtm_ulong_t cpubDate;
 
-    if (0 != gtm_ci("getmetadata", cid, ctitle, clink, cpublink, cpublisher,ccreator))
+    if (0 != gtm_ci("getmetadata", cid, ctitle, clink, cpublink, cpublisher,ccreator,&cpubDate))
     {
 		char buf[1024];
 		gtm_zstatus(buf, 1023);
@@ -212,6 +213,7 @@ ccreator[4096] = '\0';
     publink = cpublink;
     publisher = cpublisher;
     creator = ccreator;
+    pubDate = cpubDate;
     if (0 == id.length())
         return 0;
     return 1;
