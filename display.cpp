@@ -40,8 +40,10 @@ void Display::update()
     Database g;
     string s_id = "", s_title, s_link, s_publink, s_publisher, s_creator;
     int spec = 0;
+    int count = 0;
     while (g.getmetadata(s_id, s_title, s_link, s_publink, s_publisher, s_creator))
     {
+	count++;
         ostringstream idval, onclickfunc, creatorstring, outputdata;
         idval << "spec" << ++spec;
         onclickfunc << "showme('" << idval.str() << "')";
@@ -76,7 +78,15 @@ void Display::update()
             creatorstring << " by " << s_creator;
             span.append_child("span").text().set(creatorstring.str().c_str());
         }
+	span.append_child("br");
     }
+    if (0 == count)
+    {
+	pugi::xml_node nothing = this->bodynode.append_child("div");
+	nothing.append_attribute("style").set_value("color: #CCCCCC; position: relative; top: 50%; font-size: 18px; text-align: center;");
+	nothing.text().set("Nothing to display");
+    }
+
     pugi::xml_node link = this->navbarnode.append_child("a");
     link.append_attribute("style").set_value("cursor: pointer; color: blue;");
     link.append_attribute("onclick").set_value("var tmp = function() { load('/?refresh=now', window.location.refresh); return 0; }; tmp();");

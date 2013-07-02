@@ -90,14 +90,18 @@ function handlekeypress(e)
     if (e.target.id == "addurl")
     {
 	if (e.keyCode == 13) // Enter
+	{
 		load('/?addurl=' + e.target.value, function(txt) {
-			e.target.parentNode.innerHTML = txt;
-			document.getElementById("addurl").addEventListener("keypress", handlekeypress);
+			var newnode = document.createElement('div');
+			newnode.innerHTML = txt;
+			newnode = newnode.firstChild;
+			e.target.parentNode.innerHTML = newnode.innerHTML;
 		});
+	}
     }
     return 0;
 }
 
 window.onload = function() {
-	document.getElementById("addurl").addEventListener("keypress", handlekeypress);
+	document.addEventListener("keypress", handlekeypress);
 }
