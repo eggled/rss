@@ -38,11 +38,9 @@ function showme(which)
         if (! shown.already_displayed)
         {
             var localshown = shown;
-            load('/?content=' + encodeURIComponent(shown.getAttribute('data-guid')), function (txt) { if (localshown.already_displayed) return; localshown.already_displayed = 1; localshown.innerHTML += txt; } );
+            load('/?content=' + encodeURIComponent(shown.getAttribute('data-guid')), function (txt) { if (localshown.already_displayed) return; localshown.already_displayed = 1; localshown.innerHTML += txt; localshown.parentNode.scrollIntoView(1); } );
         }
         shown.style.display = 'block'; 
-        shown.parentNode.scrollIntoView(1);
-        shown.style.display = 'block';
         shown.parentNode.scrollIntoView(1);
         var bar = shown.parentNode.firstChild;
         while (bar && !( bar.id == 'item')) 

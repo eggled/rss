@@ -4,3 +4,4 @@
 - onpageload should scroll to the top, probably.
 - refresh link should reload the display pane
 - would be nice to support an import of an opml file
+- want to replace navbar items with titles, which can be downloaded.
