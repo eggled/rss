@@ -9,7 +9,7 @@ default: all
 fetcher.o: fetcher.cpp fetcher.hpp
 	g++ ${CFLAGS} -c fetcher.cpp
 
-main.o: main.cpp fetcher.hpp xparser.hpp display.hpp sock.hpp cgi.hpp
+main.o: main.cpp fetcher.hpp xparser.hpp display.hpp sock.hpp cgi.hpp debug.hpp
 	g++ ${CFLAGS} -c main.cpp
 
 pugixml.o: pugixml.cpp pugixml.hpp pugiconfig.hpp
@@ -30,8 +30,11 @@ sock.o: sock.cpp sock.hpp
 cgi.o: cgi.cpp cgi.hpp 
 	g++ ${CFLAGS} -c cgi.cpp
 
-all: fetcher.o main.o pugixml.o xparser.o display.o sock.o cgi.o database.o
-	g++ ${CFLAGS} fetcher.o main.o pugixml.o sock.o xparser.o cgi.o database.o display.o ${LDFLAGS} -o rssgen
+debug.o: debug.cpp debug.hpp
+	g++ ${CFLAGS} -c debug.cpp
+
+all: fetcher.o main.o pugixml.o xparser.o display.o sock.o cgi.o database.o debug.o
+	g++ ${CFLAGS} fetcher.o main.o pugixml.o sock.o xparser.o cgi.o database.o display.o debug.o ${LDFLAGS} -o rssgen
 
 clean:
 	rm -f fetcher.o main.o pugixml.o xparser.o display.o sock.o cgi.o database.o rssgen 

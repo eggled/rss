@@ -12,6 +12,7 @@
 #include <string.h>
 #include <signal.h>
 #include <gtmxc_types.h>
+#include "debug.hpp"
 
 using namespace std;
 
@@ -31,6 +32,7 @@ int main()
     } else if (pid == 0) {
         while (1)
         {
+		debug_out("INFO: fetching database feeds");
             Database d;
             string feed;
             while (d.getfeed(feed))
@@ -54,14 +56,18 @@ int main()
     {
         if (serv.do_accept(spawn_children))
         {
+		debug_out("INFO: Parent spawned a new pid");
             int status;
             if (childcount++ >= 5)
             {
+		debug_out("INFO: 5 children, not spawning any more.");
                 wait(&status);
+		debug_out("INFO: child exited, ready to launch another.");
                 childcount--;
             }
             continue;
         }
+	debug_out("INFO: Child process, just accepted a connection.");
         spawn_children = 0;
 
         string line, request_string;
