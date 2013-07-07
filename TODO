@@ -5,3 +5,4 @@
 - refresh link should reload the display pane
 - would be nice to support an import of an opml file
 - want to replace navbar items with titles, which can be downloaded.
+- after awhile, this stops responding to a page request... I should throw some debugging on the getmetadata function, I think.

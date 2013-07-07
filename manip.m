@@ -107,3 +107,10 @@ getanyfeed(feed)
 setfeedinfo(feedurl,title)
  s ^FEEDS(feedurl,"title")=title
  q
+; Make sure all index elements point to guids whose pubdate matches this.
+verifyindex
+ s count=0,n="",g=""
+ f  q:g'=""  s n=$o(^IND("all",n)) q:n=""  f  s g=$o(^IND("all",n,g)) q:g=""  s count=count+1 q:^ART(g,"pubDate")'=n
+ w:g'="" "Located bad index value. Index ",n," points to guid ",g,", which points to pubDate ",^ART(g,"pubDate"),!
+ w:g="" "Index verified for ",count," elements. All looks good.",!
+ q
