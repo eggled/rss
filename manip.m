@@ -1,6 +1,12 @@
 q
 ; 
-; s out="/tmp/mumps" o out:(append) u out
+; debugout
+; prints the given string to a debugging file
+debugout(str)
+ s oldout=$io
+ s out="/tmp/mumps" o out:(append) u out w $j,": ",str,! zshow "s"
+ u oldout
+ q
 ; addurl
 ; url (input) - new feed URL to be added to the page
 addurl(url)
@@ -30,9 +36,10 @@ newfname(g,file,desc)
  s:0=$d(^FILES) ^FILES=0
  s file=$i(^FILES)
  l +^FILES(file):0
- f  q:($TEST=1)&(0=$d(^FILES(file)))  s file=$i(^FILES) l +^FILES(file):0
+ f  q:($TEST=1)&(0=$d(^FILES(file)))  l -^FILES(file):0 s file=$i(^FILES) l +^FILES(file):0
  s:desc'=1 ^ART(g,"file")=file
  s:desc=1 ^ART(g,"descfile")=file
+ l -^FILES(file)
  q
 ; getfname
 ; g (input): guid of the feed item
@@ -47,18 +54,12 @@ getfname(g,file,desc)
 ; setfields
 ; Takes all the info for a feed and stores it in the database. All params are input-only.
 setfields(g,title,link,pubDate,creator,publisher,publink)
- s out="/tmp/mumps" o out:(append) u out
  s markunread=$s(0=$d(^ART(g)):1,1:0)
- w "markunread: ",markunread,!
  s updatepubDate=$s(1=$d(^ART(g,"pubDate")):$s(pubDate'=^ART(g,"pubDate"):1,1:0),1:1)
- w "updatepubDate: ",updatepubDate,!
  s ^ART(g,"title")=title,^ART(g,"link")=link,^ART(g,"pubDate")=pubDate,^ART(g,"creator")=creator,^ART(g,"publisher")=publisher,^ART(g,"publink")=publink
- w "Finished setting fields",!
  l +^IND("unread",pubDate) 
  s:markunread=1 ^IND("unread",pubDate,g)=1 
  l -^IND("unread",pubDate)
- w:markunread=1 "Set unread index",!
- w:markunread'=1 "Skipped setting unread index",!
  s:updatepubDate'=0 ^IND("all",pubDate,g)=1
  q
 ; resethard
