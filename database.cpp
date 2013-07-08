@@ -33,14 +33,15 @@ Database::Database()
     setenv("GTMCI", (string(GTMDIST) + "/../db/gtmci.ci").c_str(), 1);
     setenv("gtmroutines", (string(GTMDIST) + "/../db/r").c_str(), 1);
     setenv("gtmgbldir", (string(GTMDIST) + "/../db/cur/g/gtm.gld").c_str(), 1);
+    setenv("gtm_etrap", "d errtrap^manip", 1);
     if (0 != gtm_init())
     {
 	cerr << "Failed to init GT.M" << endl;
 	exit(1);
     }
-    sigset_t mask;
-    sigfillset(&mask);
-    sigprocmask(SIG_SETMASK, &mask, NULL);
+    //sigset_t mask;
+    //sigfillset(&mask);
+    //sigprocmask(SIG_SETMASK, &mask, NULL);
     atexit((void (*)())&gtm_exit);
 }
 

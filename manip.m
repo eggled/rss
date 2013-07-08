@@ -3,6 +3,7 @@ q
 ; debugout
 ; prints the given string to a debugging file
 debugout(str)
+ q
  s oldout=$io
  s out="/tmp/mumps" o out:(append) u out w $j,": ",str,! zshow "s"
  u oldout
@@ -54,6 +55,7 @@ getfname(g,file,desc)
 ; setfields
 ; Takes all the info for a feed and stores it in the database. All params are input-only.
 setfields(g,title,link,pubDate,creator,publisher,publink)
+ d enabletrace
  s markunread=$s(0=$d(^ART(g)):1,1:0)
  s updatepubDate=$s(1=$d(^ART(g,"pubDate")):$s(pubDate'=^ART(g,"pubDate"):1,1:0),1:1)
  s ^ART(g,"title")=title,^ART(g,"link")=link,^ART(g,"pubDate")=pubDate,^ART(g,"creator")=creator,^ART(g,"publisher")=publisher,^ART(g,"publink")=publink
@@ -113,4 +115,16 @@ verifyindex
  f  q:g'=""  s n=$o(^IND("all",n)) q:n=""  f  s g=$o(^IND("all",n,g)) q:g=""  s count=count+1 q:^ART(g,"pubDate")'=n
  w:g'="" "Located bad index value. Index ",n," points to guid ",g,", which points to pubDate ",^ART(g,"pubDate"),!
  w:g="" "Index verified for ",count," elements. All looks good.",!
+ q
+; errortrap
+errtrap
+ d debugout("Sent to error stack")
+ q
+enabletrace
+ q:$d(^trace($j))
+ s ^trace($j)=1
+ view "TRACE":1:"^trace($j)"
+ q
+overflow
+ d overflow
  q

@@ -33,19 +33,26 @@ int main()
         while (1)
         {
 		debug_out("INFO: fetching database feeds");
-            Database d;
-            string feed;
-            while (d.getfeed(feed))
-            {
-                Fetcher g(feed);
-                XParser(g.fetch());
-            }
-            sigset_t sigs;
-            sigemptyset(&sigs);
-            sigaddset(&sigs, SIGUSR1);
-            sigprocmask(SIG_UNBLOCK, &sigs, NULL);
-            signal(SIGUSR1, sigalrm);
-            sleep(30);
+	    int feed_pid = fork();
+	    if (feed_pid == 0)
+	    {
+		    Database d;
+		    string feed;
+		    while (d.getfeed(feed))
+		    {
+			    Fetcher g(feed);
+			    XParser(g.fetch());
+		    }
+		    return 0;
+	    }
+	    if (feed_pid < 0)
+	    {
+		    perror("Failed to fork fetch database feeds!");
+		    return 1;
+	    }
+	    int status;
+	    wait(&status);
+            sleep(1);
         }
     }
 
