@@ -1,4 +1,5 @@
 #include "database.hpp"
+#include "debug.hpp"
 #include <gtmxc_types.h>
 #include <stdlib.h>
 #include <string>
@@ -33,10 +34,15 @@ Database::Database()
     setenv("GTMCI", (string(GTMDIST) + "/../db/gtmci.ci").c_str(), 1);
     setenv("gtmroutines", (string(GTMDIST) + "/../db/r").c_str(), 1);
     setenv("gtmgbldir", (string(GTMDIST) + "/../db/cur/g/gtm.gld").c_str(), 1);
-    setenv("gtm_etrap", "d errtrap^manip", 1);
+    //setenv("gtm_etrap", "d errtrap^manip", 1);
     if (0 != gtm_init())
     {
+	debug_out("ERROR: Failed to init GT.M");
 	cerr << "Failed to init GT.M" << endl;
+	char buf[1024];
+	gtm_zstatus(buf, 1023);
+	debug_out("ERROR: " + string(buf));
+	cerr << "Callin for markread failed: " << buf << endl;
 	exit(1);
     }
     //sigset_t mask;

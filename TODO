@@ -1,8 +1,6 @@
 - javascript for determining "already loaded" can go away... append a child node (replace if it exists)
-- Want to respond to Ctl-C.
-- manip.m is way too sensitive to undefined globals
 - onpageload should scroll to the top, probably.
 - refresh link should reload the display pane
 - would be nice to support an import of an opml file
 - want to replace navbar items with titles, which can be downloaded.
-- after awhile, this stops responding to a page request... I should throw some debugging on the getmetadata function, I think.
+- need a "mark unread" button

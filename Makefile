@@ -2,7 +2,7 @@
 gtm_dist="/home/eggled/rss/gtm/gtmV60002"
 INCLUDE=-I${gtm_dist}
 CFLAGS=-Wall -g -rdynamic ${INCLUDE}
-LDFLAGS=-lcurl -L${gtm_dist} -lgtmshr
+LDFLAGS=-lcurl -L${gtm_dist} -lgtmshr -lutil
 
 default: all
 
@@ -21,7 +21,7 @@ xparser.o: xparser.cpp xparser.hpp pugixml.hpp
 display.o: display.cpp display.hpp xparser.hpp pugixml.hpp
 	g++ ${CFLAGS} -c display.cpp
 
-database.o: database.cpp database.hpp
+database.o: database.cpp database.hpp debug.hpp
 	c++ ${CFLAGS} -DGTMDIST="\"${gtm_dist}\"" -c database.cpp
 
 sock.o: sock.cpp sock.hpp 
