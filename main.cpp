@@ -26,6 +26,13 @@ void sigalrm(int p)
     return;
 }
 
+int sigchld_stat = 0;
+
+void sigchld(int p)
+{
+	sigchld_stat = 1;
+}
+
 int main()
 {
 
@@ -73,9 +80,22 @@ debug_out("INFO: collected feed data");
 		    return 1;
 	    }
 	    int status;
-	    waitpid(feed_pid,&status,0);
+	    sigchld_stat = 0;
+	    signal(SIGCHLD, sigchld);
+	    int remslp = sleep(30);
+	    signal(SIGCHLD, SIG_IGN);
+	    if (0 == sigchld_stat) // it took more than 30 seconds
+	    {
+		kill(feed_pid, SIGTERM);
+		debug_out("Forced to kill fetcher");
+	    }
+		else
+	    {
+		debug_out("Fetcher exited normally");
+	    }
+	    waitpid(feed_pid,&status,WNOHANG);
 		close(masterfd);
-            sleep(30);
+            sleep(remslp);
         }
     }
 
