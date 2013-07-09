@@ -21,6 +21,22 @@ function load(url, cb) // eventually allow a callback
     xmlhttp.send('');
 }
 
+function removeLinks(which)
+{
+	if (which.tagName == 'SCRIPT' || which.tagName == 'LINK')
+	{
+		which.parentNode.removeChild(which);
+		return;
+	}
+	var t = which.firstChild;
+	while (t)
+	{
+		var g = t;
+		t = g.nextSibling;
+		removeLinks(g);
+	}
+}
+
 function showme(which) 
 {
     if (document.getElementById(which)) 
@@ -38,7 +54,7 @@ function showme(which)
         if (! shown.already_displayed)
         {
             var localshown = shown;
-            load('/?content=' + encodeURIComponent(shown.getAttribute('data-guid')), function (txt) { if (localshown.already_displayed) return; localshown.already_displayed = 1; localshown.innerHTML += txt; localshown.parentNode.scrollIntoView(1); } );
+            load('/?content=' + encodeURIComponent(shown.getAttribute('data-guid')), function (txt) { if (localshown.already_displayed) return; localshown.already_displayed = 1; var d = document.createElement('div'); d.innerHTML = txt; removeLinks(d); localshown.appendChild(d); localshown.parentNode.scrollIntoView(1); } );
         }
         shown.style.display = 'block'; 
         shown.parentNode.scrollIntoView(1);
