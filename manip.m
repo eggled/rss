@@ -56,13 +56,27 @@ getfname(g,file,desc)
 ; Takes all the info for a feed and stores it in the database. All params are input-only.
 setfields(g,title,link,pubDate,creator,publisher,publink)
  d enabletrace
- s markunread=$s(0=$d(^ART(g)):1,1:0)
- s updatepubDate=$s(1=$d(^ART(g,"pubDate")):$s(pubDate'=^ART(g,"pubDate"):1,1:0),1:1)
+ s markunread=1
+ i 0'=$d(^ART(g))&0'=$d(^ART(g,"pubDate")) d ; if there exists a date,
+ .s oldpubDate=^ART(g,"pubDate") ; store it in oldpubDate
+ .i 0=$d(^IND("unread",oldpubDate,g)) d ; if oldpubDate has already been marked read,
+ ..s markunread=0 i 1
+ .e  d ; otherwise, cleanup old index.
+ ..l +^IND("unread",oldpubDate)
+ ..k ^IND("unread",oldpubDate,g) 
+ ..k:0=$d(^IND("unread",oldpubDate)) ^IND("unread",oldpubDate)
+ ..l -^IND("unread",oldpubDate)
+ .l +^IND("all",oldpubDate) ; next, clean up the all index
+ .k ^IND("all",oldpubDate,g) 
+ .k:0=$d(^IND("all",oldpubDate)) ^IND("all",oldpubDate)
+ .l -^IND("all",oldpubDate)
  s ^ART(g,"title")=title,^ART(g,"link")=link,^ART(g,"pubDate")=pubDate,^ART(g,"creator")=creator,^ART(g,"publisher")=publisher,^ART(g,"publink")=publink
  l +^IND("unread",pubDate) 
  s:markunread=1 ^IND("unread",pubDate,g)=1 
  l -^IND("unread",pubDate)
- s:updatepubDate'=0 ^IND("all",pubDate,g)=1
+ l +^IND("all",pubDate)
+ s ^IND("all",pubDate,g)=1
+ l -^IND("all",pubDate)
  q
 ; resethard
 ; Clears a
@@ -79,6 +93,7 @@ reset
 ; If there is no entry after g, g will be set to "", and the other field values are undefined.
 getmetadata(g,title,link,publink,publisher,creator,pubDate)
  s pubDate=$s(g="":$o(^IND("unread","")),1:^ART(g,"pubDate"))
+ s:pubDate="" g=""
  q:pubDate=""
  s g=$o(^IND("unread",pubDate,g))
  s:g="" pubDate=$o(^IND("unread",pubDate))

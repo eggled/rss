@@ -212,6 +212,7 @@ ccreator[4096] = '\0';
 		char buf[1024];
 		gtm_zstatus(buf, 1023);
 		cerr << "Callin for getmetadata failed: " << buf << endl;
+		return 0;
     }
 
     id = cid;

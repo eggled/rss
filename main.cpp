@@ -33,6 +33,7 @@ void sigchld(int p)
 	sigchld_stat = 1;
 }
 
+
 int main()
 {
 
@@ -83,7 +84,6 @@ debug_out("INFO: collected feed data");
 	    sigchld_stat = 0;
 	    signal(SIGCHLD, sigchld);
 	    int remslp = sleep(30);
-	    signal(SIGCHLD, SIG_IGN);
 	    if (0 == sigchld_stat) // it took more than 30 seconds
 	    {
 		kill(feed_pid, SIGTERM);
@@ -93,6 +93,14 @@ debug_out("INFO: collected feed data");
 	    {
 		debug_out("Fetcher exited normally");
 	    }
+	    sleep(1);
+	    if (0 == sigchld_stat)
+	{
+		kill(feed_pid, SIGKILL);
+		debug_out("Child process took too long to respond, sending SIGKILL");
+		sleep(1);
+	}
+	    
 	    waitpid(feed_pid,&status,WNOHANG);
 		close(masterfd);
             sleep(remslp);
