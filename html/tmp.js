@@ -118,4 +118,6 @@ function handlekeypress(e)
 
 window.onload = function() {
 	document.addEventListener("keypress", handlekeypress);
+	$(document).bind('swipeleft', mj);
+	$(document).bind('swiperight', mk);
 }

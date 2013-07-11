@@ -42,6 +42,7 @@
      overflow: auto;
      width: 200px;
      float: left;
+display: none;
  }
  .wrapall {
      width: 100%;

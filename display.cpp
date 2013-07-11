@@ -19,8 +19,22 @@ Display::Display()
 
     node = head.append_child("script");
     node.append_attribute("type").set_value("text/javascript");
+    node.append_attribute("src").set_value("http://code.jquery.com/jquery-1.8.3.min.js");
+    node.text().set(" ");
+
+    node = head.append_child("script");
+    node.append_attribute("type").set_value("text/javascript");
+    node.append_attribute("src").set_value("http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js");
+    node.text().set(" ");
+    
+    node = head.append_child("script");
+    node.append_attribute("type").set_value("text/javascript");
     node.append_attribute("src").set_value("tmp.js");
     node.text().set(" ");
+    
+    node = head.append_child("meta");
+    node.append_attribute("name").set_value("viewport");
+    node.append_attribute("content").set_value("width=device-width, initial-scale=1");
 
     node = document.child("html").append_child("body");
     node = node.append_child("div");
