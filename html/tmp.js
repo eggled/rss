@@ -19,6 +19,8 @@ function showme(which)
                 return 
             }
         }
+	if ($('#' + which).length == 0)
+		return;
         shown = $('#' + which);
         if (shown)
         {
