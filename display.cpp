@@ -73,7 +73,8 @@ main_item.append_attribute("data-role").set_value("page");
         item.append_attribute("id").set_value("itemwrapper");
         item.append_attribute("data-role").set_value("content");
         pugi::xml_node node = item.append_child("div");
-        node.append_attribute("id").set_value("item");
+        node.append_attribute("class").set_value("item");
+        node.append_attribute("id").set_value(("link_" + idval.str()).c_str());
         node.append_attribute("onclick").set_value(onclickfunc.str().c_str());
 
         //pugi::xml_node artlink = node.append_child("a");

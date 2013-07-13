@@ -3,7 +3,7 @@
     font-family: arial, sans-serif;
     font-size: 80%;
  }
- #item { 
+ .item { 
      padding: 6px;
      cursor: pointer;
      height: 27px;
@@ -12,7 +12,7 @@
      line-height: 27px;
      color: #999999 
 }
-#item b {
+.item b {
     color: black;
     font-weight: bold;
  }

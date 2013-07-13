@@ -86,6 +86,7 @@ window.onload = function() {
 			$.get(url,
 				function(html) { 
 				$("#content_" + which.id).html(removeLinks(html)); 
+				$("#link_" + which.id).css("background-color","#ccc");
 				}); 
 			});
 	//$("div").on("pageshow", function(e, ui) { $("#content_" + e.target.id).load("/?content=" + encodeURIComponent($("#content_" + e.target.id).attr('data-guid'))); });
