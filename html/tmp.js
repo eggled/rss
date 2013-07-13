@@ -22,7 +22,8 @@ return;
 function loadnew(i)
 {
 	//$('spec' + i).load('?content=' + encodeURIComponent($('spec' + i).attr('data-guid')));
-	window.location.replace('#spec' + i);
+	if ($('#spec' + i).length > 0)
+		window.location.replace('#spec' + i);
 }
 	
 
@@ -89,3 +90,6 @@ window.onload = function() {
 			});
 	//$("div").on("pageshow", function(e, ui) { $("#content_" + e.target.id).load("/?content=" + encodeURIComponent($("#content_" + e.target.id).attr('data-guid'))); });
 }
+//$(document).bind("mobileinit",function() {
+		//$.mobile.defaultPageTransition = "slide";
+		//});
