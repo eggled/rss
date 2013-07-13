@@ -1,68 +1,49 @@
 var shown;
 
+// accept text, return text.
 function removeLinks(which)
 {
-	which.find('script').remove();
-	which.find('link').remove();
+	var ret = $("<div></div>");
+	ret.html(which);
+	ret.find('script').remove();
+	ret.find('link').remove();
+	return ret.html();
 }
 
 function showme(which) 
 {
-    if ($('#' + which))
-    {
-        if (shown) 
-        {
-            shown.css('display', 'none');
-            if (shown.attr('id') == which) 
-            {
-                shown = null;
-                return 
-            }
-        }
-	if ($('#' + which).length == 0)
-		return;
-        shown = $('#' + which);
-        if (shown)
-        {
-            var localshown = shown;
-	    $.ajax('/?content=' + encodeURIComponent(shown.attr('data-guid')),
-		{ success : function (txt,stat,other) {
-			var d = $('<div></div>');
-			d.html(txt);
-			d.attr('id','contentdiv');
-			removeLinks(d); 
-			if(localshown.find('#contentdiv').length)
-			{
-				localshown.find('#contentdiv').replaceWith(d);
-			} else {
-				localshown.append(d);
-			}
-		}});
-        }
-        shown.css('display', 'block');
-        //shown.parentNode.scrollIntoView(1);
-        var bar = shown.parent().find('#item');
-        if (bar) 
-        {
-            bar.css('background-color', '#EEEEEE');
-        }
-    }
+//alert("content_" + which);
+//alert($("content_" +which).length);
+//$(which).load('?content=' + encodeURIComponent($(which).attr('data-guid')));
+window.location.href = '#' + which;
+return;
 }
+
+function loadnew(i)
+{
+	//$('spec' + i).load('?content=' + encodeURIComponent($('spec' + i).attr('data-guid')));
+	window.location.replace('#spec' + i);
+}
+	
 
 function mj() 
 {
-    if (shown) 
-    {
-        showme('spec' + String(parseInt(shown.attr('id').toString().substr(4))+1)) 
-    }
+	var n = window.location.href.toString().split('#');
+	if (n.length > 1) {
+		if (n[1].substring(0,4) == "spec") {
+			loadnew(String(parseInt(n[1].substring(4))+1));
+		}
+	}
 }
 
 function mk() 
 {
-    if (shown) 
-    {
-        showme('spec' + String(parseInt(shown.attr('id').toString().substr(4))-1)) 
-    }
+	var n = window.location.href.toString().split('#');
+	if (n.length > 1) {
+		if (n[1].substring(0,4) == "spec") {
+			loadnew(String(parseInt(n[1].substring(4))-1));
+		}
+	}
 }
 
 function handlekeypress(e)
@@ -97,4 +78,14 @@ window.onload = function() {
 	$(document).on('keypress',handlekeypress);
 	$(document).on('swipeleft', mj);
 	$(document).on('swiperight', mk);
+	$("div").on("pageshow", 
+			function(e, ui) {
+			var which = e.target;
+			var url = "/?content=" + encodeURIComponent($("#content_" + which.id).attr("data-guid"));
+			$.get(url,
+				function(html) { 
+				$("#content_" + which.id).html(removeLinks(html)); 
+				}); 
+			});
+	//$("div").on("pageshow", function(e, ui) { $("#content_" + e.target.id).load("/?content=" + encodeURIComponent($("#content_" + e.target.id).attr('data-guid'))); });
 }
