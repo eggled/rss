@@ -143,3 +143,10 @@ enabletrace
 overflow
  d overflow
  q
+; mark 10 most recent items unread
+softreset
+ n i,time,id
+ s i=0,time="",id=""
+ l +^IND
+ f  s i=i+1 q:i>10  s:id="" time=$o(^IND("all",time),-1) s id=$o(^IND("all",time,id),-1) s:id="" i=i-1 s:id'="" ^IND("unread",time,id)=1
+ q

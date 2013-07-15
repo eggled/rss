@@ -87,6 +87,13 @@ window.onload = function() {
 				function(html) { 
 				$("#content_" + which.id).html(removeLinks(html)); 
 				$("#link_" + which.id).css("background-color","#ccc");
+				$("#content_" + which.id).find("img").each(function (ind,img) { 
+					if ($(img).width() > $(window).width()) {
+						var scale = ($(window).width()-30)/$(img).width();
+						$(img).css("width",String(scale * $(img).width()) + "px");
+						$(img).css("height",String(scale * $(img).height()) + "px");
+					} 
+				});
 				}); 
 			});
 	//$("div").on("pageshow", function(e, ui) { $("#content_" + e.target.id).load("/?content=" + encodeURIComponent($("#content_" + e.target.id).attr('data-guid'))); });

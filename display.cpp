@@ -144,7 +144,9 @@ node.text().set(" ");
     }
     if (0 == count)
     {
-	pugi::xml_node nothing = this->bodynode.append_child("div");
+	pugi::xml_node node = this->bodynode.append_child("div");
+	node.append_attribute("data-role").set_value("content");
+	pugi::xml_node nothing = node.append_child("div");
 	nothing.append_attribute("style").set_value("color: #CCCCCC; position: relative; top: 50%; font-size: 18px; text-align: center;");
 	nothing.text().set("Nothing to display");
     }

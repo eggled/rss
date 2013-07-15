@@ -7,7 +7,6 @@
      padding: 6px;
      cursor: pointer;
      height: 27px;
-     overflow: hidden;
      white-space: nowrap;
      line-height: 27px;
      color: #999999 
@@ -55,6 +54,3 @@ display: none;
     height: 100%;
     overflow: auto;
  }
- body {
-     overflow: hidden
- } 
